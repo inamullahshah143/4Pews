@@ -1,16 +1,12 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:flutter_pet_shop/MainPage.dart';
 import 'package:flutter_pet_shop/utils/Constant.dart';
 import 'package:flutter_pet_shop/utils/CustomWidget.dart';
 import 'package:flutter_pet_shop/utils/PrefData.dart';
 
-
 import 'ForgotPasswordPage.dart';
 import 'SignUpPage.dart';
-
 
 class SignInPage extends StatefulWidget {
   @override
@@ -46,21 +42,17 @@ class _SignInPage extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return WillPopScope(
         child: Scaffold(
           backgroundColor: backgroundColor,
-         
           body: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: getHorizontalSpace(context)),
+            padding:
+                EdgeInsets.symmetric(horizontal: getHorizontalSpace(context)),
             child: Column(
               children: [
                 Expanded(
                   child: ListView(
                     children: [
-
                       SizedBox(
                         height: getScreenPercentSize(context, 2),
                       ),
@@ -73,7 +65,9 @@ class _SignInPage extends State<SignInPage> {
                           color: primaryColor,
                         ),
                       ),
-                      SizedBox(height: getScreenPercentSize(context, 1.5),),
+                      SizedBox(
+                        height: getScreenPercentSize(context, 1.5),
+                      ),
 
                       getTextWithFontFamilyWidget(
                         "Hey,\nLogin Now",
@@ -123,8 +117,8 @@ class _SignInPage extends State<SignInPage> {
                       SizedBox(
                         height: getScreenPercentSize(context, 4),
                       ),
-                      getButtonWithoutSpaceWidget(context, "Login", primaryColor, () {
-
+                      getButtonWithoutSpaceWidget(
+                          context, "Login", primaryColor, () {
                         PrefData.setIsSignIn(true);
                         Navigator.of(context).pop();
                         Navigator.push(
@@ -134,9 +128,10 @@ class _SignInPage extends State<SignInPage> {
                             ));
                       }),
 
-
                       Padding(
-                        padding:  EdgeInsets.only(bottom: getScreenPercentSize(context,4),top: getScreenPercentSize(context,2)),
+                        padding: EdgeInsets.only(
+                            bottom: getScreenPercentSize(context, 4),
+                            top: getScreenPercentSize(context, 2)),
                         child: getTextWidget(
                           "Login with",
                           textColor,
@@ -146,95 +141,89 @@ class _SignInPage extends State<SignInPage> {
                         ),
                       ),
 
-
                       Row(
-
                         children: [
-
-
-
-
                           Expanded(
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 // Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage(),));
-
-
-
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: getWidthPercentSize(context,2)),
-                                height: getScreenPercentSize(context,7),
-
+                                margin: EdgeInsets.only(
+                                    right: getWidthPercentSize(context, 2)),
+                                height: getScreenPercentSize(context, 7),
                                 decoration: ShapeDecoration(
-
                                   color: Colors.transparent,
-
                                   shape: SmoothRectangleBorder(
-                                    side: BorderSide(color: subTextColor,width: 0.2),
+                                    side: BorderSide(
+                                        color: subTextColor, width: 0.2),
                                     borderRadius: SmoothBorderRadius(
-                                      cornerRadius: getScreenPercentSize(context, 1.8),
+                                      cornerRadius:
+                                          getScreenPercentSize(context, 1.8),
                                       cornerSmoothing: 0.8,
                                     ),
                                   ),
                                 ),
-
-
-
-
-
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset(assetsPath+"google.png",height: getScreenPercentSize(context, 3),),
-                                    SizedBox(width: getWidthPercentSize(context, 2),),
-                                    getTextWidget('Google', textColor, getScreenPercentSize(context, 1.8),
-                                        FontWeight.w600, TextAlign.center),
+                                    Image.asset(
+                                      assetsPath + "google.png",
+                                      height: getScreenPercentSize(context, 3),
+                                    ),
+                                    SizedBox(
+                                      width: getWidthPercentSize(context, 2),
+                                    ),
+                                    getTextWidget(
+                                        'Google',
+                                        textColor,
+                                        getScreenPercentSize(context, 1.8),
+                                        FontWeight.w600,
+                                        TextAlign.center),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-
-
                           Expanded(
                             child: InkWell(
-                              onTap: (){
-
-
-                              },
+                              onTap: () {},
                               child: Container(
-                                margin: EdgeInsets.only(left: getWidthPercentSize(context,2)),
-                                height: getScreenPercentSize(context,7),
-
+                                margin: EdgeInsets.only(
+                                    left: getWidthPercentSize(context, 2)),
+                                height: getScreenPercentSize(context, 7),
                                 decoration: ShapeDecoration(
-
                                   color: Colors.transparent,
-
                                   shape: SmoothRectangleBorder(
-                                    side: BorderSide(color: subTextColor,width: 0.2),
+                                    side: BorderSide(
+                                        color: subTextColor, width: 0.2),
                                     borderRadius: SmoothBorderRadius(
-                                      cornerRadius: getScreenPercentSize(context, 1.8),
+                                      cornerRadius:
+                                          getScreenPercentSize(context, 1.8),
                                       cornerSmoothing: 0.8,
                                     ),
                                   ),
                                 ),
-
-
-
-
-
-                                child:   Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(assetsPath+"facebook.png",height: getScreenPercentSize(context, 3),),
-                                  SizedBox(width: getWidthPercentSize(context, 2),),
-                                  getTextWidget('Facebook', textColor, getScreenPercentSize(context, 1.8),
-                                      FontWeight.w600, TextAlign.center),
-                                ],
-                              ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      assetsPath + "facebook.png",
+                                      height: getScreenPercentSize(context, 3),
+                                    ),
+                                    SizedBox(
+                                      width: getWidthPercentSize(context, 2),
+                                    ),
+                                    getTextWidget(
+                                        'Facebook',
+                                        textColor,
+                                        getScreenPercentSize(context, 1.8),
+                                        FontWeight.w600,
+                                        TextAlign.center),
+                                  ],
+                                ),
                               ),
                             ),
                           )
@@ -262,28 +251,34 @@ class _SignInPage extends State<SignInPage> {
                       //         builder: (context) => SignUpPage(),
                       //       ));
                       // }),
-
-
-
                     ],
-                  ),flex: 1,
+                  ),
+                  flex: 1,
                 ),
-
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    margin: EdgeInsets.only(bottom: getScreenPercentSize(context, 2)),
+                    margin: EdgeInsets.only(
+                        bottom: getScreenPercentSize(context, 2)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        getTextWidget("Don't have an account?", textColor,
-                            getScreenPercentSize(context, 2),FontWeight.w400,TextAlign.center),
-                        SizedBox(width: 5,),
+                        getTextWidget(
+                            "Don't have an account?",
+                            textColor,
+                            getScreenPercentSize(context, 2),
+                            FontWeight.w400,
+                            TextAlign.center),
+                        SizedBox(
+                          width: 5,
+                        ),
                         InkWell(
-
-                          child:     getTextWidget("Sign Up", primaryColor,
-                              getScreenPercentSize(context, 2),FontWeight.w500,TextAlign.center),
-
+                          child: getTextWidget(
+                              "Sign Up",
+                              primaryColor,
+                              getScreenPercentSize(context, 2),
+                              FontWeight.w500,
+                              TextAlign.center),
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -295,8 +290,6 @@ class _SignInPage extends State<SignInPage> {
                     ),
                   ),
                 )
-
-
               ],
             ),
           ),

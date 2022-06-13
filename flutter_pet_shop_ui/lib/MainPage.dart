@@ -162,9 +162,9 @@ class _MainPage extends State<MainPage> {
         ),
         BottomNavyBarItem(
             iconSize: iconHeight,
-            title: 'Profile',
+            title: 'Chat',
             activeColor: _activeColor,
-            imageName: "more.png",
+            imageName: "chat.png",
             inactiveColor: _inactiveColor,
             textAlign: TextAlign.center),
       ],
