@@ -3,14 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_pet_shop/AddToCartPage.dart';
 import 'package:flutter_pet_shop/tabWidget/HomeWidget.dart';
 
-import 'package:flutter_pet_shop/tabWidget/ProfileWidget.dart';
 import 'package:flutter_pet_shop/tabWidget/SearchWidget.dart';
 import 'package:flutter_pet_shop/utils/Constant.dart';
 import 'package:flutter_pet_shop/utils/CustomWidget.dart';
 
 import 'AllPetPage.dart';
 import 'customView/CustomAnimatedBottomBar.dart';
-import 'main.dart';
+import 'tabWidget/ChatBoot.dart';
 
 class MainPage extends StatefulWidget {
   final int? tabPosition;
@@ -58,14 +57,7 @@ class _MainPage extends State<MainPage> {
       AllPetPage(function: () {
         _requestPop();
       }),
-      ProfileWidget(() {
-        myTheme.switchTheme();
-
-        Future.delayed(Duration(seconds: 1), () {
-          setThemePosition(context: context);
-          setState(() {});
-        });
-      }),
+      ChatBoot(),
     ];
     return IndexedStack(
       index: _currentIndex,

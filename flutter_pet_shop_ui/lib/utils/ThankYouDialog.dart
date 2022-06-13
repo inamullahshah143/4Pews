@@ -1,13 +1,9 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pet_shop/MainPage.dart';
-import 'package:flutter_pet_shop/TrackOrderPage.dart';
 
 import 'Constant.dart';
 import 'CustomWidget.dart';
-
-
-
 
 class ThankYouDialog extends StatefulWidget {
   final BuildContext context;
@@ -58,151 +54,131 @@ class _ThankYouDialog extends State<ThankYouDialog> {
       decoration: new BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
-
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-        Expanded(child: Container(child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            Image.asset(
-              assetsPath + "Group.png",
-              height: getPercentSize(height, 27),
-              width: getPercentSize(height, 27),
-            ),
-            SizedBox(
-              height: getPercentSize(
-                height,
-                7,
-              ),
-            ),
-            getTextWidget(
-                'Order Placed',
-                textColor,
-              getPercentSize(height, 5  ),
-                FontWeight.bold,
-                TextAlign.center,
-              ) ,
-
-
-            SizedBox(
-              height: getPercentSize(
-                height,
-                5,
-              ),
-            ),
-
-
-            getCustomTextWidget('Your order has been successfully Completed!',
-                textColor, getScreenPercentSize(context, 2), FontWeight.w400, TextAlign.center, 2),
-
-            SizedBox(
-              height: getPercentSize(
-                height,
-                9,
-              ),
-            ),
-
-
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: getPercentSize(width, 5)),
-              child: Row(
-
-                children: [
-
-                  Expanded(
-                    child: InkWell(
-                      onTap: (){
-
-                        Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainPage(),
-                                  ));
-
-                      },
-                      child: getMaterialCell(context,widget: Container(
-                        margin: EdgeInsets.only(right: getWidthPercentSize(context,3)),
-                        height: getScreenPercentSize(context,7),
-
-                        decoration: ShapeDecoration(
-
-                          color: alphaColor,
-
-                          shape: SmoothRectangleBorder(
-                            side: BorderSide(color: primaryColor,width: 2),
-                            borderRadius: SmoothBorderRadius(
-                              cornerRadius: getScreenPercentSize(context, 1.8),
-                              cornerSmoothing: 0.8,
-                            ),
-                          ),
-                        ),
-
-
-
-
-
-                        child: Center(
-                          child: getTextWidget('Ok', primaryColor, getScreenPercentSize(context, 2),
-                              FontWeight.w600, TextAlign.center),
-                        ),
-                      )),
-                    ),
+          Expanded(
+              child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  assetsPath + "Group.png",
+                  height: getPercentSize(height, 27),
+                  width: getPercentSize(height, 27),
+                ),
+                SizedBox(
+                  height: getPercentSize(
+                    height,
+                    7,
                   ),
-
-
-                  Expanded(
-                    child: InkWell(
-                      onTap: (){
-                        Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => TrackOrderPage(),
-                                              ));
-                      },
-                      child: getMaterialCell(context,widget: Container(
-                        margin: EdgeInsets.only(left: getWidthPercentSize(context,3)),
-                        height: getScreenPercentSize(context,7),
-
-                        decoration: ShapeDecoration(
-
-                          color: primaryColor,
-
-                          shape: SmoothRectangleBorder(
-                            borderRadius: SmoothBorderRadius(
-                              cornerRadius: getScreenPercentSize(context, 1.8),
-                              cornerSmoothing: 0.8,
-                            ),
-                          ),
+                ),
+                getTextWidget(
+                  'Order Placed',
+                  textColor,
+                  getPercentSize(height, 5),
+                  FontWeight.bold,
+                  TextAlign.center,
+                ),
+                SizedBox(
+                  height: getPercentSize(
+                    height,
+                    5,
+                  ),
+                ),
+                getCustomTextWidget(
+                    'Your order has been successfully Completed!',
+                    textColor,
+                    getScreenPercentSize(context, 2),
+                    FontWeight.w400,
+                    TextAlign.center,
+                    2),
+                SizedBox(
+                  height: getPercentSize(
+                    height,
+                    9,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: getPercentSize(width, 5)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainPage(),
+                                ));
+                          },
+                          child: getMaterialCell(context,
+                              widget: Container(
+                                margin: EdgeInsets.only(
+                                    right: getWidthPercentSize(context, 3)),
+                                height: getScreenPercentSize(context, 7),
+                                decoration: ShapeDecoration(
+                                  color: alphaColor,
+                                  shape: SmoothRectangleBorder(
+                                    side: BorderSide(
+                                        color: primaryColor, width: 2),
+                                    borderRadius: SmoothBorderRadius(
+                                      cornerRadius:
+                                          getScreenPercentSize(context, 1.8),
+                                      cornerSmoothing: 0.8,
+                                    ),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: getTextWidget(
+                                      'Ok',
+                                      primaryColor,
+                                      getScreenPercentSize(context, 2),
+                                      FontWeight.w600,
+                                      TextAlign.center),
+                                ),
+                              )),
                         ),
-
-
-
-
-
-                        child: Center(
-                          child: getTextWidget('Track Order', Colors.white, getScreenPercentSize(context, 2),
-                              FontWeight.w600, TextAlign.center),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {},
+                          child: getMaterialCell(context,
+                              widget: Container(
+                                margin: EdgeInsets.only(
+                                    left: getWidthPercentSize(context, 3)),
+                                height: getScreenPercentSize(context, 7),
+                                decoration: ShapeDecoration(
+                                  color: primaryColor,
+                                  shape: SmoothRectangleBorder(
+                                    borderRadius: SmoothBorderRadius(
+                                      cornerRadius:
+                                          getScreenPercentSize(context, 1.8),
+                                      cornerSmoothing: 0.8,
+                                    ),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: getTextWidget(
+                                      'Track Order',
+                                      Colors.white,
+                                      getScreenPercentSize(context, 2),
+                                      FontWeight.w600,
+                                      TextAlign.center),
+                                ),
+                              )),
                         ),
-                      )),
-                    ),
-                  )
-                ],
-              ),
-            )
-
-
-
-          ],
-        ),)),
-
-
-
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
         ],
       ),
     );

@@ -7,8 +7,6 @@ import 'package:flutter_pet_shop/utils/CustomWidget.dart';
 import 'package:flutter_pet_shop/utils/DataFile.dart';
 import 'package:flutter_pet_shop/utils/SizeConfig.dart';
 
-import 'LocationTrackMap.dart';
-
 class PetDetailPage extends StatefulWidget {
   final ProductModel model;
 
@@ -111,7 +109,6 @@ class _PetDetailPage extends State<PetDetailPage> {
                       ),
                       InkWell(
                         onTap: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => LocationTrackMap(widget.model),));
                         },
                         child: Row(
                           children: [

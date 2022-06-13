@@ -3,22 +3,23 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pet_shop/PetDetailPage.dart';
+import 'package:flutter_pet_shop/main.dart';
 import 'package:flutter_pet_shop/model/DataModel.dart';
 import 'package:flutter_pet_shop/model/ProductModel.dart';
+import 'package:flutter_pet_shop/tabWidget/ProfileWidget.dart';
 import 'package:flutter_pet_shop/utils/Constant.dart';
 import 'package:flutter_pet_shop/utils/CustomWidget.dart';
 import 'package:flutter_pet_shop/utils/DataFile.dart';
 
 import '../NotificationList.dart';
 import '../ProductDetailPage.dart';
-import '../ShopPage.dart';
 
 class HomeWidget extends StatefulWidget {
   final Function function;
   final Function? functionViewAll;
   final Function? functionAdoptionAll;
 
-  HomeWidget(this.function, {this.functionViewAll,this.functionAdoptionAll});
+  HomeWidget(this.function, {this.functionViewAll, this.functionAdoptionAll});
 
   @override
   _HomeWidget createState() {
@@ -177,13 +178,7 @@ class _HomeWidget extends State<HomeWidget> {
                     children: [
                       Expanded(
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ShopPage(),
-                                ));
-                          },
+                          onTap: () {},
                           child: getSubMaterialCell(
                             context,
                             widget: Container(
@@ -390,14 +385,15 @@ class _HomeWidget extends State<HomeWidget> {
                                         textColor,
                                         getPercentSize(remainHeight, 11.5),
                                         FontWeight.bold,
-                                        TextAlign.start,1)),
-
+                                        TextAlign.start,
+                                        1)),
                                 getCustomTextWidget(
                                     model.price!,
                                     primaryColor,
                                     getPercentSize(remainHeight, 11.5),
                                     FontWeight.bold,
-                                    TextAlign.start,1)
+                                    TextAlign.start,
+                                    1)
                               ],
                             ),
                             SizedBox(
@@ -406,7 +402,6 @@ class _HomeWidget extends State<HomeWidget> {
 
                             Row(
                               children: [
-
                                 Image.asset(
                                   assetsPath + "location.png",
                                   height: getPercentSize(remainHeight, 11),
@@ -420,7 +415,8 @@ class _HomeWidget extends State<HomeWidget> {
                                         textColor,
                                         getPercentSize(remainHeight, 10),
                                         FontWeight.w400,
-                                        TextAlign.start,1)),
+                                        TextAlign.start,
+                                        1)),
 
                                 // Image.asset(
                                 //       assetsPath + "location.png",
@@ -630,7 +626,6 @@ class _HomeWidget extends State<HomeWidget> {
           );
         });
   }
-
 
   RangeValues _currentRangeValues = const RangeValues(100, 1000);
 
@@ -1331,12 +1326,29 @@ class _HomeWidget extends State<HomeWidget> {
       margin: EdgeInsets.symmetric(horizontal: defMargin),
       child: Row(
         children: [
-          // Image.asset(
-          //   assetsPath + "menu.png",
-          //   height: getScreenPercentSize(context, 2.5),
-          //   color: textColor,
-          // ),
-
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileWidget(() {
+                      myTheme.switchTheme();
+                      Future.delayed(Duration(seconds: 1), () {
+                        setThemePosition(context: context);
+                        setState(() {});
+                      });
+                    }),
+                  ));
+            },
+            icon: Image.asset(
+              assetsPath + "menu.png",
+              height: getScreenPercentSize(context, 2.5),
+              color: textColor,
+            ),
+          ),
+          SizedBox(
+            width: 25,
+          ),
           Expanded(
             child: getCustomTextWithFontFamilyWidget(
                 'Adopt a Friend',
@@ -1347,8 +1359,12 @@ class _HomeWidget extends State<HomeWidget> {
                 1),
           ),
           InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder:  (context) => NotificationList(),));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationList(),
+                  ));
             },
             child: Image.asset(
               assetsPath + "notifications.png",
