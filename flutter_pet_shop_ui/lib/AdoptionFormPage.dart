@@ -618,7 +618,7 @@ class _AdoptionFormPage extends State<AdoptionFormPage> {
             dropdownValue1 = newValue!;
           });
         },
-        items: <String>['Breed', 'Cat']
+        items: <String>['Breed', 'Cat', 'Parrot']
             .map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

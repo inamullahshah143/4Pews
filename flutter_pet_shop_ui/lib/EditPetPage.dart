@@ -8,14 +8,14 @@ import 'package:flutter_pet_shop/utils/DataFile.dart';
 import 'package:flutter_pet_shop/utils/PrefData.dart';
 import 'package:flutter_pet_shop/utils/SizeConfig.dart';
 
-class AddNewPetPage extends StatefulWidget {
+class EditPetPage extends StatefulWidget {
   @override
-  _AddNewPetPage createState() {
-    return _AddNewPetPage();
+  _EditPetPage createState() {
+    return _EditPetPage();
   }
 }
 
-class _AddNewPetPage extends State<AddNewPetPage> {
+class _EditPetPage extends State<EditPetPage> {
   List<ProductModel> productList = DataFile.getProductModel();
   TextEditingController textEditingController = new TextEditingController();
   TextEditingController textWeightController = new TextEditingController();
@@ -23,16 +23,16 @@ class _AddNewPetPage extends State<AddNewPetPage> {
 
   double cellHeight = 0;
 
-  _AddNewPetPage();
+  _EditPetPage();
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      textEditingController.text = "Mack";
-      textDescController.text = loremText;
-      textWeightController.text = "3.5 Kg";
-    });
+    // setState(() {
+    //   textEditingController.text = "Mack";
+    //   textDescController.text = loremText;
+    //   textWeightController.text = "3.5 Kg";
+    // });
   }
 
   Future<bool> _requestPop() {
@@ -50,10 +50,10 @@ class _AddNewPetPage extends State<AddNewPetPage> {
     SizeConfig().init(context);
 
     double margin = getWidthPercentSize(context, 2.5);
-    double height = getScreenPercentSize(context, 20);
+    double height = getScreenPercentSize(context, 17);
     cellHeight = getScreenPercentSize(context, 6.5);
-    defMargin = getHorizontalSpace(context);
 
+    defMargin= getHorizontalSpace(context);
      fontSize = getPercentSize(cellHeight, 28);
 
 
@@ -68,7 +68,7 @@ class _AddNewPetPage extends State<AddNewPetPage> {
           body: Container(
             child: Column(
               children: [
-                getAppBar(context, "Add New Pet", isBack: true, function: () {
+                getAppBar(context, "Edit New Pet", isBack: true, function: () {
                   _requestPop();
                 }),
                 SizedBox(
@@ -84,7 +84,7 @@ class _AddNewPetPage extends State<AddNewPetPage> {
                         height: margin,
                       ),
                       getTextWithFontFamilyWidget(
-                          'Edit your new furry friends',
+                          'Add your new furry friends',
                           textColor,
                           getScreenPercentSize(context, 1.7),
                           FontWeight.w500,
@@ -93,59 +93,50 @@ class _AddNewPetPage extends State<AddNewPetPage> {
                         height: margin,
                       ),
 
+
                       Container(
                         height: height,
 
-                        decoration: getShapeDecoration(),
 
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        child: Stack(
                           children: [
                             Image.asset(
-                              assetsPath + "camera fill.png",
-                              height: getPercentSize(height, 15),
-                              color: primaryColor,
+                              assetsPath + "new_pet.png",
+                              height: height,
+                              fit: BoxFit.fill,
+                              width: double.infinity,
                             ),
-                            SizedBox(width: getWidthPercentSize(context, 2),),
-                            getTextWithFontFamilyWidget('Add Photo', primaryColor,
-                                getPercentSize(height, 12)  , FontWeight.w500,TextAlign.center)
-
-
-                            // Image.asset(
-                            //   assetsPath + "new_pet.png",
-                            //   height: height,
-                            //   width: double.infinity,
-                            // ),
-                            // Align(
-                            //   alignment: Alignment.bottomRight,
-                            //   child: Container(
-                            //     height: getPercentSize(height, 15),
-                            //     width: getPercentSize(height, 15),
-                            //     margin: EdgeInsets.all(
-                            //         getScreenPercentSize(context, 1.5)),
-                            //     padding:
-                            //     EdgeInsets.all(getPercentSize(height, 3)),
-                            //     decoration: BoxDecoration(
-                            //         shape: BoxShape.circle,
-                            //         color: Colors.black38),
-                            //     child: Center(
-                            //       child: Image.asset(
-                            //         assetsPath + "edit.png",
-                            //         color: Colors.white,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // )
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                height: getPercentSize(height, 15),
+                                width: getPercentSize(height, 15),
+                                margin: EdgeInsets.all(
+                                    getScreenPercentSize(context, 1.5)),
+                                padding:
+                                EdgeInsets.all(getPercentSize(height, 3)),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.black38),
+                                child: Center(
+                                  child: Image.asset(
+                                    assetsPath + "edit.png",
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
+
+
 
                       SizedBox(
                         height: margin,
                       ),
 
-                      getTextFiledWidget(context, "", textEditingController),
+                      getTextFiledWidget(context, "Pet Name", textEditingController),
                       getDropDownWidget(context),
                       getDropDownWidget1(context),
                       getCalendar(),
@@ -158,8 +149,8 @@ class _AddNewPetPage extends State<AddNewPetPage> {
                           getRadioButton(context, "Female", 1),
                         ],
                       ),
-                      getTextFiledWidget(context, "", textWeightController),
-                      getDescTextFiledWidget(context, "", textDescController),
+                      getTextFiledWidget(context, "Weight", textWeightController),
+                      getDescTextFiledWidget(context, "Description", textDescController),
                     ],
                   ),
                   flex: 1,
@@ -373,7 +364,9 @@ class _AddNewPetPage extends State<AddNewPetPage> {
     );
   }
 
-  Widget getDropDownWidget(BuildContext context,) {
+  Widget getDropDownWidget(
+    BuildContext context,
+  ) {
     
 
     return Container(
@@ -390,6 +383,7 @@ class _AddNewPetPage extends State<AddNewPetPage> {
         isDense: true,
         isExpanded: true,
         icon: Image.asset(assetsPath+"down-arrow.png",color: textColor,height: fontSize,),
+
         elevation: 16,
         style: TextStyle(
             fontFamily: fontFamily,

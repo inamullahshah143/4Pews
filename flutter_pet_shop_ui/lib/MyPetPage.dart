@@ -8,6 +8,7 @@ import 'package:flutter_pet_shop/utils/PrefData.dart';
 import 'package:flutter_pet_shop/utils/SizeConfig.dart';
 
 import 'AddNewPetPage.dart';
+import 'EditPetPage.dart';
 import 'PetDetailPage.dart';
 
 class MyPetPage extends StatefulWidget {
@@ -282,7 +283,11 @@ class _MyPetPage extends State<MyPetPage> {
                           ),
                           InkWell(
                             onTap: () {
-                             
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EditPetPage(),
+                                  ));
                             },
                             child: Container(
                               width: getPercentSize(height, 30),

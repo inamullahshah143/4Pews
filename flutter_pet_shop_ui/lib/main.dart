@@ -8,9 +8,10 @@ import 'package:flutter_pet_shop/utils/CustomWidget.dart';
 import 'package:flutter_pet_shop/utils/MyTheme.dart';
 import 'package:flutter_pet_shop/utils/PrefData.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'IntroPage.dart';
 import 'MainPage.dart';
-import 'auth/IntroPage.dart';
-import 'auth/SignInPage.dart';
+import 'SignInPage.dart';
 import 'generated/l10n.dart';
 
 MyTheme myTheme = new MyTheme();
@@ -20,6 +21,7 @@ void main() {
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
 
   SharedPreferences.getInstance().then((instance) async {
     setThemePosition();
@@ -41,6 +43,7 @@ class MyApp extends StatefulWidget {
 class _MyApp extends State<MyApp> {
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     myTheme.switchTheme();
     setState(() {});
@@ -170,6 +173,7 @@ class _SplashScreen extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () {
       if (_isIntro) {
         Navigator.pushReplacement(
+
             context, MaterialPageRoute(builder: (context) => IntroPage()));
       } else if (!_isSignIn) {
         print("intro----$_isSignIn");
@@ -225,12 +229,10 @@ class _SplashScreen extends State<SplashScreen> {
               height: getScreenPercentSize(context, 12),
               color: Colors.white,
             ),
-            SizedBox(
-              height: getScreenPercentSize(context, 1.2),
-            ),
+            SizedBox(height: getScreenPercentSize(context, 1.2),),
             Center(
               child: getSplashTextWidget(
-                  "4Paws",
+                  "Petshops",
                   Colors.white,
                   getScreenPercentSize(context, 4),
                   FontWeight.w500,
