@@ -232,7 +232,7 @@ class _SplashScreen extends State<SplashScreen> {
             SizedBox(height: getScreenPercentSize(context, 1.2),),
             Center(
               child: getSplashTextWidget(
-                  "Petshops",
+                  "4Paws",
                   Colors.white,
                   getScreenPercentSize(context, 4),
                   FontWeight.w500,
