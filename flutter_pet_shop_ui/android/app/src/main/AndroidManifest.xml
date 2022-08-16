@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_pet_shop">
+    package="com.ishahz.four_pews">
    <application
-        android:label="4Paws"
+        android:label="4Pews"
         android:icon="@mipmap/ic_launcher">
 
        <meta-data android:name="com.google.android.geo.API_KEY"

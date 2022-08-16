@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "267477979437",
+    "project_id": "pews-dd64d",
+    "storage_bucket": "pews-dd64d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267477979437:android:b16ad43ee4a593d89f83a4",
+        "android_client_info": {
+          "package_name": "com.ishahz.four_pews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267477979437-6bvn0e2jjat5qhe4tvur9ualaqdfbc4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp6PhhyvzCh_L_RHssVGMVOUEEe01v8_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267477979437-6bvn0e2jjat5qhe4tvur9ualaqdfbc4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
