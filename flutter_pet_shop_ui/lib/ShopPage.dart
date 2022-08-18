@@ -28,7 +28,6 @@ class _ShopPage extends State<ShopPage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

@@ -41,7 +41,6 @@ class _IntroPage extends State<IntroPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     introModelList = DataFile.getIntroModel();
     Future.delayed(Duration(seconds: 0), () {
@@ -53,7 +52,6 @@ class _IntroPage extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-
 
     double firstSize = getScreenPercentSize(context, 55);
     double remainSize = getScreenPercentSize(context, 100) - firstSize;
@@ -86,8 +84,11 @@ class _IntroPage extends State<IntroPage> {
                         gradient: LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            colors: [introModelList[position].color!,introModelList[position].color!.withOpacity(0.8), introModelList[position].endColor!])
-                    ),
+                            colors: [
+                          introModelList[position].color!,
+                          introModelList[position].color!.withOpacity(0.8),
+                          introModelList[position].endColor!
+                        ])),
                     child: Stack(
                       children: [
                         Align(
@@ -95,34 +96,25 @@ class _IntroPage extends State<IntroPage> {
                           child: Container(
                             // height: double.infinity,
                             // width: double.infinity,
-                            margin: EdgeInsets.only(bottom: getScreenPercentSize(context,4)),
+                            margin: EdgeInsets.only(
+                                bottom: getScreenPercentSize(context, 4)),
                             child: Image.asset(
-
-
-                                assetsPath + introModelList[position].image!,
-                            height: getScreenPercentSize(context, 85),
+                              assetsPath + introModelList[position].image!,
+                              height: getScreenPercentSize(context, 85),
                             ),
                           ),
                         ),
-
-
                         Container(
                           width: double.infinity,
-                          margin: EdgeInsets.symmetric(horizontal: getHorizontalSpace(context)),
-
-
+                          margin: EdgeInsets.symmetric(
+                              horizontal: getHorizontalSpace(context)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
-
-
-
                               Padding(
                                 padding: EdgeInsets.only(
-                                    top: (defMargin*2),
-                                    bottom: (defMargin)),
+                                    top: (defMargin * 2), bottom: (defMargin)),
                                 child: getCustomTextWithFontFamilyWidget(
                                     introModelList[position].name!,
                                     textColor,
@@ -138,30 +130,27 @@ class _IntroPage extends State<IntroPage> {
                                   FontWeight.w400,
                                   TextAlign.start,
                                   2),
-
-
-
-
-
-
                             ],
                           ),
                         ),
                         Align(
-                          alignment: Alignment.topRight,
-                          child: Container(
-                            margin: EdgeInsets.only(right: getHorizontalSpace(context),
-                            top: defMargin*2),
-                            child: AnimatedSmoothIndicator(
-                              activeIndex: _position,
-
-                              count:  introModelList.length,
-                              effect:  WormEffect(dotColor: Colors.white,activeDotColor: Colors.black,
-                              dotHeight: getScreenPercentSize(context,1.2),dotWidth: getScreenPercentSize(context,1.2)),
-                            ),
-                          )
-
-                        )
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  right: getHorizontalSpace(context),
+                                  top: defMargin * 2),
+                              child: AnimatedSmoothIndicator(
+                                activeIndex: _position,
+                                count: introModelList.length,
+                                effect: WormEffect(
+                                    dotColor: Colors.white,
+                                    activeDotColor: Colors.black,
+                                    dotHeight:
+                                        getScreenPercentSize(context, 1.2),
+                                    dotWidth:
+                                        getScreenPercentSize(context, 1.2)),
+                              ),
+                            ))
                       ],
                     ),
                   );
@@ -169,81 +158,88 @@ class _IntroPage extends State<IntroPage> {
                 itemCount: introModelList.length,
                 onPageChanged: _onPageViewChange,
               ),
-
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: getHorizontalSpace(context),
-                  vertical: getScreenPercentSize(context,4)),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: getHorizontalSpace(context),
+                      vertical: getScreenPercentSize(context, 4)),
                   child: Row(
-
                     children: [
                       Visibility(
-                        visible: (_position<=2),
+                        visible: (_position <= 2),
                         child: Expanded(
                           child: InkWell(
                             onTap: () {
                               skip();
                             },
-                            child: getTextWidget("Skip", textColor, getScreenPercentSize(context, 2),
-                                FontWeight.bold, TextAlign.start),
-                          ),flex: 1,
+                            child: getTextWidget(
+                                "Skip",
+                                textColor,
+                                getScreenPercentSize(context, 2),
+                                FontWeight.bold,
+                                TextAlign.start),
+                          ),
+                          flex: 1,
                         ),
                       ),
-
-
                       Visibility(
-                        visible: (_position==3),
+                        visible: (_position == 3),
                         child: Expanded(
                           child: InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage(),));
-
-
-
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUpPage(),
+                                  ));
                             },
                             child: Container(
-                              margin: EdgeInsets.only(right: getWidthPercentSize(context,3)),
-                              height: getScreenPercentSize(context,7),
-
+                              margin: EdgeInsets.only(
+                                  right: getWidthPercentSize(context, 3)),
+                              height: getScreenPercentSize(context, 7),
                               decoration: ShapeDecoration(
-
                                 color: '#FFEDB4'.toColor(),
-                                shadows: [BoxShadow(
-                                    color: textColor.withOpacity(0.1),
-                                    blurRadius: 2,
-                                    spreadRadius: 1,
-                                    offset: Offset(0, 4))],
+                                shadows: [
+                                  BoxShadow(
+                                      color: textColor.withOpacity(0.1),
+                                      blurRadius: 2,
+                                      spreadRadius: 1,
+                                      offset: Offset(0, 4))
+                                ],
                                 shape: SmoothRectangleBorder(
-                                  side: BorderSide(color: Colors.white,width: 2),
+                                  side:
+                                      BorderSide(color: Colors.white, width: 2),
                                   borderRadius: SmoothBorderRadius(
-                                    cornerRadius: getScreenPercentSize(context, 1.8),
+                                    cornerRadius:
+                                        getScreenPercentSize(context, 1.8),
                                     cornerSmoothing: 0.8,
                                   ),
                                 ),
                               ),
-
-
-
-
-
                               child: Center(
-                                child: getTextWidget('Sign In', textColor, getScreenPercentSize(context, 2),
-                                    FontWeight.bold, TextAlign.center),
+                                child: getTextWidget(
+                                    'Sign In',
+                                    textColor,
+                                    getScreenPercentSize(context, 2),
+                                    FontWeight.bold,
+                                    TextAlign.center),
                               ),
                             ),
                           ),
                         ),
                       ),
-
-
                       Expanded(
                         child: InkWell(
-                          onTap: (){
-                            if(_position==3){
+                          onTap: () {
+                            if (_position == 3) {
                               PrefData.setIsIntro(false);
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage(),));
-                            }else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignInPage(),
+                                  ));
+                            } else {
                               if (_position < (introModelList.length - 1)) {
                                 setState(() {
                                   _position = _position + 1;
@@ -255,32 +251,33 @@ class _IntroPage extends State<IntroPage> {
                             }
                           },
                           child: Container(
-                            margin: EdgeInsets.only(left: getWidthPercentSize(context,3)),
-                            height: getScreenPercentSize(context,7),
-
+                            margin: EdgeInsets.only(
+                                left: getWidthPercentSize(context, 3)),
+                            height: getScreenPercentSize(context, 7),
                             decoration: ShapeDecoration(
-
                               color: backgroundColor,
-                              shadows: [BoxShadow(
-                                  color: textColor.withOpacity(0.1),
-                                  blurRadius: 2,
-                                  spreadRadius: 1,
-                                  offset: Offset(0, 4))],
+                              shadows: [
+                                BoxShadow(
+                                    color: textColor.withOpacity(0.1),
+                                    blurRadius: 2,
+                                    spreadRadius: 1,
+                                    offset: Offset(0, 4))
+                              ],
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(
-                                  cornerRadius: getScreenPercentSize(context, 1.8),
+                                  cornerRadius:
+                                      getScreenPercentSize(context, 1.8),
                                   cornerSmoothing: 0.8,
                                 ),
                               ),
                             ),
-
-
-
-
-
                             child: Center(
-                              child: getTextWidget((_position==3)?"Register":"Next", textColor, getScreenPercentSize(context, 2),
-                                  FontWeight.bold, TextAlign.center),
+                              child: getTextWidget(
+                                  (_position == 3) ? "Register" : "Next",
+                                  textColor,
+                                  getScreenPercentSize(context, 2),
+                                  FontWeight.bold,
+                                  TextAlign.center),
                             ),
                           ),
                         ),
@@ -289,8 +286,6 @@ class _IntroPage extends State<IntroPage> {
                   ),
                 ),
               )
-
-
             ],
           ),
         ),

@@ -40,7 +40,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 4),
                         itemBuilder: (context, index) {
-                          return MyBox();
+                          return const MyBox();
                         },
                       ),
                     ),

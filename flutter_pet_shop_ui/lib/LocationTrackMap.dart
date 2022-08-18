@@ -21,7 +21,6 @@ class _LocationTrackMap extends State<LocationTrackMap> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     setState(() {});
