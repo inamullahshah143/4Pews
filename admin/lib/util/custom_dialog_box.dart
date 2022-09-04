@@ -37,7 +37,6 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
               top: avatarRadius,
               right: padding,
               bottom: padding),
-          // margin: EdgeInsets.only(top: avatarRadius),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
