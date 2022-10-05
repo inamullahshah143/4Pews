@@ -29,7 +29,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
   void initState() {
     super.initState();
     addressList = DataFile.getAddressList();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -38,7 +38,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   getOption() {
@@ -54,6 +54,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
     double cellHeight = MediaQuery.of(context).size.width * 0.2;
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -451,6 +452,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                 // ),
 
                 Expanded(
+                  flex: 1,
                   child: Container(
                     margin: EdgeInsets.only(top: (leftMargin)),
                     padding:
@@ -460,7 +462,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                         children: [
                           ListView.builder(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: addressList.length,
                               itemBuilder: (context, index) {
                                 return InkWell(
@@ -485,6 +487,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Expanded(
+                                              flex: 1,
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -526,6 +529,7 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                                                       2),
                                                             ),
                                                             Expanded(
+                                                              flex: 1,
                                                               child: getCustomTextWithoutAlignWithFontFamily(
                                                                   addressList[
                                                                           index]
@@ -536,7 +540,6 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                                                   getPercentSize(
                                                                       cellHeight,
                                                                       20)),
-                                                              flex: 1,
                                                             ),
                                                           ],
                                                         ),
@@ -568,8 +571,9 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                                     alignment:
                                                         Alignment.centerRight,
                                                     child: Padding(
-                                                      padding: EdgeInsets.only(
-                                                          right: 3),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 3),
                                                       child: InkWell(
                                                         onTap: () {
                                                           Navigator.push(
@@ -577,12 +581,11 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                                               MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        EditAddressPage(),
+                                                                        const EditAddressPage(),
                                                               ));
                                                         },
                                                         child: Image.asset(
-                                                          assetsPath +
-                                                              "edit.png",
+                                                          "${assetsPath}edit.png",
                                                           height:
                                                               getPercentSize(
                                                                   cellHeight,
@@ -605,7 +608,6 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                                                   )
                                                 ],
                                               ),
-                                              flex: 1,
                                             ),
                                           ],
                                         ),
@@ -624,7 +626,8 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => AddNewAddressPage(),
+                                    builder: (context) =>
+                                        const AddNewAddressPage(),
                                   ));
                             }),
                           )
@@ -632,7 +635,6 @@ class _CheckAddressPage extends State<CheckAddressPage> {
                       ),
                     ),
                   ),
-                  flex: 1,
                 ),
 
                 Container(
@@ -649,7 +651,6 @@ class _CheckAddressPage extends State<CheckAddressPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 }

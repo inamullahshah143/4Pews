@@ -29,37 +29,37 @@ class _SubmitDialogState extends State<SubmitDialog> {
     return Stack(
       children: <Widget>[
         Container(
-          padding:
-              EdgeInsets.only(left: padding, right: padding, bottom: padding),
-          margin: EdgeInsets.only(top: avatarRadius),
+          padding: const EdgeInsets.only(
+              left: padding, right: padding, bottom: padding),
+          margin: const EdgeInsets.only(top: avatarRadius),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset(
-                assetsPath + "user 1.png",
+                "${assetsPath}user 1.png",
                 height: getScreenPercentSize(context, 12),
                 // color: primaryColor,
               ),
               SizedBox(
                 height: getScreenPercentSize(context, 5),
               ),
-              getCustomTextWithFontFamilyWidget('Your Request has been\nsubmitted',
-                  textColor, getScreenPercentSize(context, 2.2),
-                  FontWeight.w500, TextAlign.center, 2),
+              getCustomTextWithFontFamilyWidget(
+                  'Your Request has been\nsubmitted',
+                  textColor,
+                  getScreenPercentSize(context, 2.2),
+                  FontWeight.w500,
+                  TextAlign.center,
+                  2),
               SizedBox(
                 height: getScreenPercentSize(context, 5),
               ),
-
-
-              getButtonWithoutSpaceWidget(context, "Ok",primaryColor, (){
+              getButtonWithoutSpaceWidget(context, "Ok", primaryColor, () {
                 Navigator.of(context).pop();
                 widget.func!();
               }),
-
               SizedBox(
                 height: getScreenPercentSize(context, 1.5),
               ),
-
             ],
           ),
         ),

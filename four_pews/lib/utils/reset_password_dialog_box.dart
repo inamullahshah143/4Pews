@@ -29,39 +29,46 @@ class _ResetPasswordDialogBoxState extends State<ResetPasswordDialogBox> {
     return Stack(
       children: <Widget>[
         Container(
-          padding:
-              EdgeInsets.only(left: padding, right: padding, bottom: padding),
-          margin: EdgeInsets.only(top: avatarRadius),
+          padding: const EdgeInsets.only(
+              left: padding, right: padding, bottom: padding),
+          margin: const EdgeInsets.only(top: avatarRadius),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset(
-                assetsPath + "lock.png",
+                "${assetsPath}lock.png",
                 height: getScreenPercentSize(context, 12),
               ),
               SizedBox(
                 height: getScreenPercentSize(context, 5),
               ),
-              getCustomTextWithFontFamilyWidget('Password Changed', textColor, getScreenPercentSize(context, 3),
-                  FontWeight.w500, TextAlign.center, 1),
+              getCustomTextWithFontFamilyWidget(
+                  'Password Changed',
+                  textColor,
+                  getScreenPercentSize(context, 3),
+                  FontWeight.w500,
+                  TextAlign.center,
+                  1),
               SizedBox(
                 height: getScreenPercentSize(context, 1.7),
               ),
-              getCustomTextWidget('Your password has been successfully changed!',
-                  textColor, getScreenPercentSize(context, 2), FontWeight.w400, TextAlign.center, 2),
+              getCustomTextWidget(
+                  'Your password has been successfully changed!',
+                  textColor,
+                  getScreenPercentSize(context, 2),
+                  FontWeight.w400,
+                  TextAlign.center,
+                  2),
               SizedBox(
                 height: getScreenPercentSize(context, 5),
               ),
-
-              getButtonWithoutSpaceWidget(context, "Ok",primaryColor, (){
+              getButtonWithoutSpaceWidget(context, "Ok", primaryColor, () {
                 Navigator.of(context).pop();
                 widget.func!();
               }),
-
               SizedBox(
                 height: getScreenPercentSize(context, 1.5),
               ),
-
             ],
           ),
         ),

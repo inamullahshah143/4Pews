@@ -64,7 +64,7 @@ class _AllPetPageState extends State<AllPetPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MyPetPage(),
+                            builder: (context) => const MyPetPage(),
                           ));
                     },
                     child: getSubMaterialCell(

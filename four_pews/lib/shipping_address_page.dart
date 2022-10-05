@@ -102,7 +102,7 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
                           child: isData
                               ? ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: addressList.length,
                                   itemBuilder: (context, index) {
                                     return getMaterialCell(context,
@@ -124,6 +124,7 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Expanded(
+                                                  flex: 1,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
@@ -177,7 +178,8 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
                                                             .centerRight,
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsets.only(
+                                                              const EdgeInsets
+                                                                      .only(
                                                                   right: 3),
                                                           child: Icon(
                                                             (index ==
@@ -199,7 +201,6 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
                                                       )
                                                     ],
                                                   ),
-                                                  flex: 1,
                                                 ),
                                               ],
                                             ),
@@ -223,7 +224,7 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AddNewAddressPage(),
+                              builder: (context) => const AddNewAddressPage(),
                             ));
                       }),
                     ),
@@ -275,7 +276,7 @@ class _ShippingAddressPage extends State<ShippingAddressPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddNewAddressPage(),
+                    builder: (context) => const AddNewAddressPage(),
                   )).then((value) => isDataAvailable());
             },
             child: Container(

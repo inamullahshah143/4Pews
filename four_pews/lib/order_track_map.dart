@@ -29,8 +29,8 @@ class _OrderTrackMap extends State<OrderTrackMap> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    PolylineId polylineId = PolylineId("area");
-    PolylineId polylineId2 = PolylineId("area2");
+    PolylineId polylineId = const PolylineId("area");
+    PolylineId polylineId2 = const PolylineId("area2");
     double bottomHeight = SizeConfig.safeBlockVertical! * 20;
     double bottomImageHeight = getPercentSize(bottomHeight, 50);
     return WillPopScope(
@@ -51,7 +51,7 @@ class _OrderTrackMap extends State<OrderTrackMap> {
             backgroundColor: backgroundColor,
             title: getAppBarText(context, 'Track Order'),
           ),
-          body: Container(
+          body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Column(
@@ -70,7 +70,7 @@ class _OrderTrackMap extends State<OrderTrackMap> {
                     scrollGesturesEnabled: true,
                     tiltGesturesEnabled: false,
                     // myLocationEnabled: true,
-                    initialCameraPosition: CameraPosition(
+                    initialCameraPosition: const CameraPosition(
                       // target: LatLng(21.2089, 72.8907),
                       target: LatLng(
                           40.91163687464769 + 30, -74.52864461445306 + 30),
@@ -80,8 +80,8 @@ class _OrderTrackMap extends State<OrderTrackMap> {
                       zoom: 7,
                     ),
 
-                    markers: Set<Marker>.of(<Marker>[
-                      Marker(
+                    markers: <Marker>{
+                      const Marker(
                           markerId: MarkerId("Ey"),
                           position: LatLng(
                               40.91163687464769 + 30, -74.52864461445306 + 30),
@@ -91,8 +91,8 @@ class _OrderTrackMap extends State<OrderTrackMap> {
                             title: "Estimated Time",
                             snippet: "5-10 min",
                           )),
-                    ]),
-                    polylines: Set<Polyline>.of(<Polyline>[
+                    },
+                    polylines: <Polyline>{
                       Polyline(
                           polylineId: polylineId,
                           points: getPoints(),
@@ -105,23 +105,23 @@ class _OrderTrackMap extends State<OrderTrackMap> {
                           width: 5,
                           color: Colors.grey,
                           visible: true)
-                    ]),
-                    polygons: Set<Polygon>.of(<Polygon>[
+                    },
+                    polygons: <Polygon>{
                       Polygon(
-                          polygonId: PolygonId('area'),
+                          polygonId: const PolygonId('area'),
                           points: getPoints(),
                           strokeColor: Colors.pink,
                           strokeWidth: 5,
                           fillColor: Colors.transparent,
                           visible: true),
-                    ]),
+                    },
                   ),
                 ),
                 Container(
                   width: double.infinity,
                   height: SizeConfig.safeBlockVertical! * 20,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40)),
                       color: backgroundColor),
@@ -134,7 +134,7 @@ class _OrderTrackMap extends State<OrderTrackMap> {
                         borderRadius: BorderRadius.all(Radius.circular(
                             getPercentSize(bottomImageHeight, 12))),
                         child: Image.asset(
-                          assetsPath + "hugh.png",
+                          "${assetsPath}hugh.png",
                           fit: BoxFit.cover,
                           width: bottomImageHeight,
                           height: bottomImageHeight,
@@ -215,9 +215,9 @@ class _OrderTrackMap extends State<OrderTrackMap> {
 
   getPoints() {
     return [
-      LatLng(40.91163687464769, -74.52864461445306),
+      const LatLng(40.91163687464769, -74.52864461445306),
       // LatLng(21.2117 - 15, 72.8858 - 15),
-      LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
+      const LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
     ];
   }
 
@@ -226,8 +226,8 @@ class _OrderTrackMap extends State<OrderTrackMap> {
       // LatLng(21.2089, 72.8907),
       // LatLng(21.2089 + 20, 72.8907 + 20),
 
-      LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
-      LatLng(40.91163687464769 + 50, -74.52864461445306 + 50),
+      const LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
+      const LatLng(40.91163687464769 + 50, -74.52864461445306 + 50),
 
       // LatLng(21.2084, 72.8990),
     ];

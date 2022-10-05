@@ -10,7 +10,7 @@ import 'sign_in_page.dart';
 class PhoneVerification extends StatefulWidget {
   final bool isSignUp;
 
-  PhoneVerification(this.isSignUp);
+  const PhoneVerification(this.isSignUp);
 
   @override
   _PhoneVerification createState() {
@@ -21,25 +21,25 @@ class PhoneVerification extends StatefulWidget {
 class _PhoneVerification extends State<PhoneVerification> {
   bool isRemember = false;
   int themeMode = 0;
-  TextEditingController textEmailController = new TextEditingController();
-  TextEditingController textPasswordController = new TextEditingController();
+  TextEditingController textEmailController = TextEditingController();
+  TextEditingController textPasswordController = TextEditingController();
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   final GlobalKey<FormFieldState<String>> _formKey =
       GlobalKey<FormFieldState<String>>(debugLabel: '_formKey');
-  TextEditingController _pinEditingController =
+  final TextEditingController _pinEditingController =
       TextEditingController(text: '123');
-  bool _enable = true;
+  final bool _enable = true;
 
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(const Duration(seconds: 0), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -48,15 +48,16 @@ class _PhoneVerification extends State<PhoneVerification> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    ColorBuilder _solidColor = PinListenColorBuilder(cellColor, cellColor);
+    ColorBuilder solidColor = PinListenColorBuilder(cellColor, cellColor);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
             backgroundColor: backgroundColor,
             elevation: 0,
-            title: Text(""),
+            title: const Text(""),
             leading: GestureDetector(
               onTap: () {
                 _requestPop();
@@ -96,13 +97,13 @@ class _PhoneVerification extends State<PhoneVerification> {
                     height: getScreenPercentSize(context, 5),
                   ),
                   Center(
-                    child: Container(
+                    child: SizedBox(
                       width: SizeConfig.safeBlockHorizontal! * 70,
                       child: PinInputTextFormField(
                         key: _formKey,
                         pinLength: 4,
-                        decoration: new BoxLooseDecoration(
-                          bgColorBuilder: _solidColor,
+                        decoration: BoxLooseDecoration(
+                          bgColorBuilder: solidColor,
                           strokeWidth: 0.5,
                           textStyle: TextStyle(
                               color: textColor,
@@ -147,7 +148,7 @@ class _PhoneVerification extends State<PhoneVerification> {
                         cursor: Cursor(
                           width: 2,
                           color: primaryColor,
-                          radius: Radius.circular(1),
+                          radius: const Radius.circular(1),
                           enabled: true,
                         ),
                       ),
@@ -204,7 +205,7 @@ class _PhoneVerification extends State<PhoneVerification> {
                                     getScreenPercentSize(context, 2),
                                     FontWeight.w600,
                                     TextAlign.center),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 InkWell(
@@ -227,7 +228,6 @@ class _PhoneVerification extends State<PhoneVerification> {
               ),
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 }

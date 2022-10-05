@@ -16,7 +16,7 @@ import 'model/order_model.dart';
 class MyOrderPage extends StatefulWidget {
   final bool isHomePage;
 
-  MyOrderPage(this.isHomePage);
+  const MyOrderPage(this.isHomePage);
 
   @override
   _MyOrderPage createState() {
@@ -48,7 +48,7 @@ class _MyOrderPage extends State<MyOrderPage>
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   double defaultMargin = 0;
@@ -64,6 +64,7 @@ class _MyOrderPage extends State<MyOrderPage>
     double radius = getPercentSize(height, 15);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -170,6 +171,7 @@ class _MyOrderPage extends State<MyOrderPage>
                                             Row(
                                               children: [
                                                 Expanded(
+                                                  flex: 1,
                                                   child:
                                                       getCustomTextWithFontFamilyWidget(
                                                           subCategoryModel
@@ -180,7 +182,6 @@ class _MyOrderPage extends State<MyOrderPage>
                                                           FontWeight.w500,
                                                           TextAlign.start,
                                                           1),
-                                                  flex: 1,
                                                 ),
                                                 getCustomTextWidget(
                                                     '25-02-2022',
@@ -207,6 +208,7 @@ class _MyOrderPage extends State<MyOrderPage>
                                             Row(
                                               children: [
                                                 Expanded(
+                                                  flex: 1,
                                                   child: getCustomTextWidget(
                                                       subCategoryModel.price!,
                                                       primaryColor,
@@ -215,7 +217,6 @@ class _MyOrderPage extends State<MyOrderPage>
                                                       FontWeight.w600,
                                                       TextAlign.start,
                                                       1),
-                                                  flex: 1,
                                                 ),
                                                 Container(
                                                   padding: EdgeInsets.symmetric(
@@ -264,22 +265,21 @@ class _MyOrderPage extends State<MyOrderPage>
               ),
             ],
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   emptyWidget() {
     PrefData.setIsOrder(true);
     double width = getWidthPercentSize(context, 45);
     double height = getScreenPercentSize(context, 7);
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            assetsPath + "no_orders.png",
+            "${assetsPath}no_orders.png",
             height: getScreenPercentSize(context, 20),
           ),
           SizedBox(
@@ -308,7 +308,7 @@ class _MyOrderPage extends State<MyOrderPage>
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MainPage(),
+                    builder: (context) => const MainPage(),
                   ));
             },
             child: getMaterialCell(context,
@@ -324,7 +324,7 @@ class _MyOrderPage extends State<MyOrderPage>
                             color: primaryColor.withOpacity(0.1),
                             blurRadius: 5,
                             spreadRadius: 5,
-                            offset: Offset(0, 5))
+                            offset: const Offset(0, 5))
                       ],
                       shape: SmoothRectangleBorder(
                         side: BorderSide(color: primaryColor, width: 1.5),

@@ -20,8 +20,8 @@ class SignInPage extends StatefulWidget {
 class _SignInPage extends State<SignInPage> {
   bool isRemember = false;
 
-  TextEditingController textNameController = new TextEditingController();
-  TextEditingController textPasswordController = new TextEditingController();
+  TextEditingController textNameController = TextEditingController();
+  TextEditingController textPasswordController = TextEditingController();
 
   Future<bool> _requestPop() {
     // Navigator.push(
@@ -30,13 +30,13 @@ class _SignInPage extends State<SignInPage> {
     //       builder: (context) => AddToCartPage(),
     //     ));
     Navigator.of(context).pop();
-    return new Future.value(false);
+    return Future.value(false);
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -45,6 +45,7 @@ class _SignInPage extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -55,7 +56,7 @@ class _SignInPage extends State<SignInPage> {
               statusBarIconBrightness: Brightness.dark,
               statusBarBrightness: Brightness.light, // For iOS (dark icons)
             ),
-            title: Text(""),
+            title: const Text(""),
             leading: GestureDetector(
               onTap: () {
                 _requestPop();
@@ -72,6 +73,7 @@ class _SignInPage extends State<SignInPage> {
             child: Column(
               children: [
                 Expanded(
+                  flex: 1,
                   child: ListView(
                     children: [
                       SizedBox(
@@ -81,7 +83,7 @@ class _SignInPage extends State<SignInPage> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Image.asset(
-                          assetsPath + "splash_icon.png",
+                          "${assetsPath}splash_icon.png",
                           height: getScreenPercentSize(context, 7.5),
                           color: primaryColor,
                         ),
@@ -145,7 +147,7 @@ class _SignInPage extends State<SignInPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MainPage(),
+                              builder: (context) => const MainPage(),
                             ));
                       }),
 
@@ -190,7 +192,7 @@ class _SignInPage extends State<SignInPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      assetsPath + "google.png",
+                                      "${assetsPath}google.png",
                                       height: getScreenPercentSize(context, 3),
                                     ),
                                     SizedBox(
@@ -231,7 +233,7 @@ class _SignInPage extends State<SignInPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      assetsPath + "facebook.png",
+                                      "${assetsPath}facebook.png",
                                       height: getScreenPercentSize(context, 3),
                                     ),
                                     SizedBox(
@@ -274,7 +276,6 @@ class _SignInPage extends State<SignInPage> {
                       // }),
                     ],
                   ),
-                  flex: 1,
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -290,7 +291,7 @@ class _SignInPage extends State<SignInPage> {
                             getScreenPercentSize(context, 2),
                             FontWeight.w400,
                             TextAlign.center),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         InkWell(
@@ -304,7 +305,7 @@ class _SignInPage extends State<SignInPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignUpPage()));
+                                    builder: (context) => const SignUpPage()));
                           },
                         )
                       ],
@@ -314,7 +315,6 @@ class _SignInPage extends State<SignInPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 }

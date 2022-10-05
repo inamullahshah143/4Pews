@@ -289,7 +289,7 @@ class _MyAdoptionPage extends State<MyAdoptionPage>
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MainPage(tabPosition: 3),
+                    builder: (context) => const MainPage(tabPosition: 3),
                   )).then((value) => isDataAvailable());
             },
             child: getMaterialCell(context,

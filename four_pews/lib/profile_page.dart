@@ -20,11 +20,11 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePage extends State<ProfilePage> {
   List<AddressModel> addressList = DataFile.getAddressList();
 
-  TextEditingController firstNameController = new TextEditingController();
-  TextEditingController lastNameController = new TextEditingController();
-  TextEditingController mailController = new TextEditingController();
-  TextEditingController genderController = new TextEditingController();
-  TextEditingController phoneController = new TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   void initState() {
@@ -42,7 +42,7 @@ class _ProfilePage extends State<ProfilePage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   XFile? _image;
@@ -56,7 +56,7 @@ class _ProfilePage extends State<ProfilePage> {
       );
     } else {
       return Image.asset(
-        assetsPath + "hugh.png",
+        "${assetsPath}hugh.png",
         fit: BoxFit.cover,
       );
     }
@@ -72,6 +72,7 @@ class _ProfilePage extends State<ProfilePage> {
     defaultMargin = getHorizontalSpace(context);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -106,10 +107,11 @@ class _ProfilePage extends State<ProfilePage> {
                   height: getScreenPercentSize(context, 2),
                 ),
                 Expanded(
+                  flex: 1,
                   child: ListView(
                     padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                     children: [
-                      Container(
+                      SizedBox(
                           height: profileHeight + (profileHeight / 5),
                           child: Align(
                             alignment: Alignment.topCenter,
@@ -192,7 +194,6 @@ class _ProfilePage extends State<ProfilePage> {
                           context, "Phone Number", phoneController),
                     ],
                   ),
-                  flex: 1,
                 ),
                 Container(
                   margin: EdgeInsets.only(top: (defaultMargin / 2)),
@@ -208,8 +209,7 @@ class _ProfilePage extends State<ProfilePage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   Widget getEditProfileTextFiledWidget(BuildContext context, String s,

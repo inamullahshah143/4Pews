@@ -14,7 +14,7 @@ class ThankYouDialog extends StatefulWidget {
     return _ThankYouDialog();
   }
 
-  ThankYouDialog(this.context, this.onChanged);
+  const ThankYouDialog(this.context, this.onChanged);
 }
 
 class _ThankYouDialog extends State<ThankYouDialog> {
@@ -51,7 +51,7 @@ class _ThankYouDialog extends State<ThankYouDialog> {
       height: height,
       width: width,
       padding: EdgeInsets.all((radius)),
-      decoration: new BoxDecoration(
+      decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
       ),
@@ -66,7 +66,7 @@ class _ThankYouDialog extends State<ThankYouDialog> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  assetsPath + "Group.png",
+                  "${assetsPath}Group.png",
                   height: getPercentSize(height, 27),
                   width: getPercentSize(height, 27),
                 ),

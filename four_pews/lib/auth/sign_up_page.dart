@@ -395,7 +395,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PhoneVerification(true),
+                              builder: (context) =>
+                                  const PhoneVerification(true),
                             ));
                       }),
 

@@ -13,7 +13,8 @@ class NotificationList extends StatefulWidget {
 }
 
 class _NotificationList extends State<NotificationList> {
-  List<ModelNotification> _notificationList = DataFile.getNotificationList();
+  final List<ModelNotification> _notificationList =
+      DataFile.getNotificationList();
   bool isData = false;
 
   @override
@@ -61,7 +62,7 @@ class _NotificationList extends State<NotificationList> {
             //   },
             // ),
           ),
-          body: Container(
+          body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Column(
@@ -82,7 +83,7 @@ class _NotificationList extends State<NotificationList> {
                               vertical: getPercentSize(itemHeight, 7)),
                           itemCount: _notificationList.length,
                           itemBuilder: (context, index) {
-                            ModelNotification _notification =
+                            ModelNotification notification =
                                 _notificationList[index];
                             return getMaterialCell(context,
                                 widget: Container(
@@ -118,8 +119,7 @@ class _NotificationList extends State<NotificationList> {
                                                 primaryColor),
                                             child: Center(
                                               child: Image.asset(
-                                                assetsPath +
-                                                    "notifications.png",
+                                                "${assetsPath}notifications.png",
                                                 height: getPercentSize(
                                                     itemHeight, 20),
                                                 color: Colors.white,
@@ -129,6 +129,7 @@ class _NotificationList extends State<NotificationList> {
                                           getPercentSize(itemHeight, 15),
                                           getPercentSize(itemHeight, 45)),
                                       Expanded(
+                                        flex: 1,
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -138,16 +139,16 @@ class _NotificationList extends State<NotificationList> {
                                             Row(
                                               children: [
                                                 Expanded(
+                                                  flex: 1,
                                                   child:
                                                       getCustomTextWithFontFamilyWidget(
-                                                          _notification.title,
+                                                          notification.title,
                                                           textColor,
                                                           getPercentSize(
                                                               itemHeight, 16),
                                                           FontWeight.w400,
                                                           TextAlign.start,
                                                           1),
-                                                  flex: 1,
                                                 ),
                                                 getCustomTextWidget(
                                                     '2 h ago',
@@ -163,7 +164,7 @@ class _NotificationList extends State<NotificationList> {
                                                 height: getPercentSize(
                                                     itemHeight, 7)),
                                             getCustomTextWidget(
-                                                _notification.desc,
+                                                notification.desc,
                                                 textColor,
                                                 getPercentSize(itemHeight, 15),
                                                 FontWeight.w400,
@@ -171,7 +172,6 @@ class _NotificationList extends State<NotificationList> {
                                                 2),
                                           ],
                                         ),
-                                        flex: 1,
                                       )
                                     ],
                                   ),
@@ -198,7 +198,7 @@ class _NotificationList extends State<NotificationList> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            assetsPath + "bell-1 1.png",
+            "${assetsPath}bell-1 1.png",
             height: getScreenPercentSize(context, 20),
           ),
           SizedBox(

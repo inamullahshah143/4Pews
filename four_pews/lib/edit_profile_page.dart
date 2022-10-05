@@ -19,11 +19,11 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePage extends State<EditProfilePage> {
   List<AddressModel> addressList = DataFile.getAddressList();
 
-  TextEditingController firstNameController = new TextEditingController();
-  TextEditingController lastNameController = new TextEditingController();
-  TextEditingController mailController = new TextEditingController();
-  TextEditingController genderController = new TextEditingController();
-  TextEditingController phoneController = new TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _EditProfilePage extends State<EditProfilePage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   XFile? _image;
@@ -63,7 +63,7 @@ class _EditProfilePage extends State<EditProfilePage> {
       );
     } else {
       return Image.asset(
-        assetsPath + "hugh.png",
+        "${assetsPath}hugh.png",
         fit: BoxFit.cover,
       );
     }
@@ -80,6 +80,7 @@ class _EditProfilePage extends State<EditProfilePage> {
     double editSize = getPercentSize(profileHeight, 26);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -119,10 +120,11 @@ class _EditProfilePage extends State<EditProfilePage> {
                     height: getScreenPercentSize(context, 2),
                   ),
                   Expanded(
+                    flex: 1,
                     child: ListView(
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                       children: [
-                        Container(
+                        SizedBox(
                             height: profileHeight + (profileHeight / 5),
                             child: Align(
                               alignment: Alignment.topCenter,
@@ -168,12 +170,12 @@ class _EditProfilePage extends State<EditProfilePage> {
                                                       .withOpacity(0.1),
                                                   blurRadius: 4,
                                                   spreadRadius: 3,
-                                                  offset: Offset(0, 3))
+                                                  offset: const Offset(0, 3))
                                             ],
                                           ),
                                           child: Center(
                                             child: Image.asset(
-                                              assetsPath + "edit.png",
+                                              "${assetsPath}edit.png",
                                               color: primaryColor,
                                               height:
                                                   getPercentSize(editSize, 55),
@@ -202,7 +204,6 @@ class _EditProfilePage extends State<EditProfilePage> {
                             context, "Phone Number", phoneController),
                       ],
                     ),
-                    flex: 1,
                   ),
                   Container(
                     margin: EdgeInsets.only(top: (defaultMargin / 2)),
@@ -214,8 +215,7 @@ class _EditProfilePage extends State<EditProfilePage> {
               ),
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   getTitle(String string) {

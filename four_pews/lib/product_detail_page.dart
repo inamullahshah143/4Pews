@@ -12,8 +12,9 @@ import 'model/review_model.dart';
 class ProductDetailPage extends StatefulWidget {
   final ProductModel model;
 
-  ProductDetailPage(this.model);
+  const ProductDetailPage(this.model);
 
+  @override
   _ProductDetailPage createState() {
     return _ProductDetailPage();
   }
@@ -55,7 +56,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   @override
@@ -83,7 +84,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                       widget: InkWell(
                           onTap: () {},
                           child: Image.asset(
-                            assetsPath + "heart.png",
+                            "${assetsPath}heart.png",
                             height: getScreenPercentSize(context, 2.5),
                             color: textColor,
                           ))),
@@ -91,6 +92,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                     height: getScreenPercentSize(context, 1.5),
                   ),
                   Expanded(
+                    flex: 1,
                     child: ListView(
                       padding: EdgeInsets.symmetric(horizontal: margin),
                       children: [
@@ -98,7 +100,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                           borderRadius: BorderRadius.circular(
                               getPercentSize(imgHeight, 4)),
                           child: Image.asset(
-                            assetsPath + 'product_detail.png',
+                            '${assetsPath}product_detail.png',
                             // assetsPath + widget.model.image!,
                             width: imgHeight,
                             height: imgHeight,
@@ -129,7 +131,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                         Row(
                           children: [
                             Image.asset(
-                              assetsPath + "star.png",
+                              "${assetsPath}star.png",
                               height: getScreenPercentSize(context, 2.2),
                             ),
                             SizedBox(
@@ -167,13 +169,13 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                           child: Row(
                             children: [
                               Expanded(
+                                flex: 1,
                                 child: getTextWithFontFamilyWidget(
                                     'Quantity',
                                     textColor,
                                     getScreenPercentSize(context, 2.2),
                                     FontWeight.w500,
                                     TextAlign.start),
-                                flex: 1,
                               ),
                               Padding(
                                 padding: EdgeInsets.only(right: margin),
@@ -216,7 +218,6 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                         ),
                       ],
                     ),
-                    flex: 1,
                   ),
                   Container(
                     margin: EdgeInsets.only(top: margin),
@@ -225,7 +226,7 @@ class _ProductDetailPage extends State<ProductDetailPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AddToCartPage(),
+                            builder: (context) => const AddToCartPage(),
                           ));
                     }),
                   )

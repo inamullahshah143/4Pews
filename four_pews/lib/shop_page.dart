@@ -32,7 +32,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   FocusNode myFocusNode = FocusNode();
@@ -263,6 +263,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                       child: Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: InkWell(
                               onTap: () {
                                 filterDialog();
@@ -272,7 +273,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset(assetsPath + "Sort.png",
+                                    Image.asset("${assetsPath}Sort.png",
                                         color: Colors.white,
                                         height:
                                             getPercentSize(bottomWidth, 10)),
@@ -289,7 +290,6 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            flex: 1,
                           ),
                           Container(
                             height: double.infinity,
@@ -297,6 +297,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                             color: Colors.white,
                           ),
                           Expanded(
+                            flex: 1,
                             child: InkWell(
                               onTap: () {
                                 filterDialog1();
@@ -306,7 +307,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset(assetsPath + "Filter.png",
+                                    Image.asset("${assetsPath}Filter.png",
                                         color: Colors.white,
                                         height:
                                             getPercentSize(bottomWidth, 10)),
@@ -323,7 +324,6 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            flex: 1,
                           )
                         ],
                       ),
@@ -532,29 +532,28 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
 
     var height = getScreenPercentSize(context, 35);
 
-    double width = getWidthPercentSize(context, 40);
     double imgHeight = getPercentSize(height, 45);
     double remainHeight = height - imgHeight;
 
     double radius = getPercentSize(height, 5);
 
-    double _crossAxisSpacing = 0;
-    var _screenWidth = MediaQuery.of(context).size.width;
-    var _crossAxisCount = 2;
-    var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) /
-        _crossAxisCount;
+    double crossAxisSpacing = 0;
+    var screenWidth = MediaQuery.of(context).size.width;
+    var crossAxisCount = 2;
+    var width = (screenWidth - ((crossAxisCount - 1) * crossAxisSpacing)) /
+        crossAxisCount;
 
-    var _aspectRatio = _width / height;
+    var aspectRatio = width / height;
 
     return GridView.count(
-      crossAxisCount: _crossAxisCount,
+      crossAxisCount: crossAxisCount,
       shrinkWrap: true,
       padding: EdgeInsets.symmetric(horizontal: (defMargin * 1.2)),
       scrollDirection: Axis.vertical,
       primary: false,
       crossAxisSpacing: (defMargin * 2),
       mainAxisSpacing: 0,
-      childAspectRatio: _aspectRatio,
+      childAspectRatio: aspectRatio,
       children: List.generate(productList.length, (index) {
         ProductModel model = productList[index];
 
@@ -569,7 +568,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                     color: subTextColor.withOpacity(0.1),
                     blurRadius: 2,
                     spreadRadius: 2,
-                    offset: Offset(0, 1))
+                    offset: const Offset(0, 1))
               ],
               shape: SmoothRectangleBorder(
                 // side: BorderSide(color: iconColor, width: 0.1),
@@ -623,7 +622,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                           // ),
                           // ),
                           child: Center(
-                            child: Image.asset(assetsPath + "heart.png",
+                            child: Image.asset("${assetsPath}heart.png",
                                 color: primaryColor,
                                 height: getPercentSize(imgHeight, 20)),
                           ),
@@ -661,7 +660,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                       Row(
                         children: [
                           Image.asset(
-                            assetsPath + "star.png",
+                            "${assetsPath}star.png",
                             height: getPercentSize(remainHeight, 9),
                           ),
                           SizedBox(
@@ -952,7 +951,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                   margin: EdgeInsets.only(
                       left: index == 0 ? (defMargin) : (defMargin / 1.5)),
                   child: Container(
-                    margin: EdgeInsets.all(1),
+                    margin: const EdgeInsets.all(1),
 
                     width: width,
 
@@ -972,7 +971,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                         Container(
                           height: height,
                           width: height,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white54,
                             shape: BoxShape.circle,
                           ),
@@ -1213,13 +1212,13 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                         child: Row(
                           children: [
                             Expanded(
+                              flex: 1,
                               child: getTextWithFontFamilyWidget(
                                   'Sort By',
                                   textColor,
                                   getPercentSize(height, 5),
                                   FontWeight.w500,
                                   TextAlign.start),
-                              flex: 1,
                             ),
                             InkWell(
                                 onTap: () {
@@ -1251,7 +1250,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                       ListView.builder(
                         shrinkWrap: true,
                         itemCount: list.length,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
@@ -1283,13 +1282,13 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                               child: Row(
                                 children: [
                                   Expanded(
+                                    flex: 1,
                                     child: getTextWidget(
                                         list[index],
                                         textColor,
                                         getPercentSize(subHeight, 27),
                                         FontWeight.w400,
                                         TextAlign.start),
-                                    flex: 1,
                                   ),
                                   Visibility(
                                     visible: (position == index),
@@ -1462,13 +1461,13 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                         child: Row(
                           children: [
                             Expanded(
+                              flex: 1,
                               child: getTextWithFontFamilyWidget(
                                   'Filter',
                                   textColor,
                                   getPercentSize(height, 5),
                                   FontWeight.w500,
                                   TextAlign.start),
-                              flex: 1,
                             ),
                             InkWell(
                                 onTap: () {
@@ -1749,23 +1748,23 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
   }
 
   getGrid(var setState) {
-    var _crossAxisSpacing = 1;
-    var _screenWidth = MediaQuery.of(context).size.width;
-    var _crossAxisCount = 3;
-    var _width = (_screenWidth - ((_crossAxisCount - 1) * _crossAxisSpacing)) /
-        _crossAxisCount;
+    var crossAxisSpacing = 1;
+    var screenWidth = MediaQuery.of(context).size.width;
+    var crossAxisCount = 3;
+    var width = (screenWidth - ((crossAxisCount - 1) * crossAxisSpacing)) /
+        crossAxisCount;
     var cellHeight = getScreenPercentSize(context, 5.5);
 
     var margin = getWidthPercentSize(context, 3);
 
-    var _aspectRatio = _width / cellHeight;
+    var aspectRatio = width / cellHeight;
 
     return Container(
-      margin: EdgeInsets.only(right: 1),
+      margin: const EdgeInsets.only(right: 1),
       child: GridView.count(
-        crossAxisCount: _crossAxisCount,
+        crossAxisCount: crossAxisCount,
         shrinkWrap: true,
-        childAspectRatio: _aspectRatio,
+        childAspectRatio: aspectRatio,
         mainAxisSpacing: margin,
         crossAxisSpacing: (margin),
         // childAspectRatio: 0.64,
@@ -1777,7 +1776,7 @@ class _ShopPage extends State<ShopPage> with SingleTickerProviderStateMixin {
                 materialPosition = index;
               });
             },
-            child: Container(
+            child: SizedBox(
               width: cellHeight,
               child: Container(
                 margin: EdgeInsets.only(

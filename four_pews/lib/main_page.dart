@@ -13,7 +13,7 @@ import 'customView/custom_animated_bottom_bar.dart';
 
 class MainPage extends StatefulWidget {
   final int? tabPosition;
-  MainPage({this.tabPosition});
+  const MainPage({this.tabPosition});
 
   @override
   _MainPage createState() {
@@ -32,7 +32,7 @@ class _MainPage extends State<MainPage> {
     } else {
       exitApp();
     }
-    return new Future.value(false);
+    return Future.value(false);
   }
 
   Widget getBody() {
@@ -74,7 +74,7 @@ class _MainPage extends State<MainPage> {
         _currentIndex = widget.tabPosition!;
       });
     }
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(const Duration(seconds: 0), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -83,6 +83,7 @@ class _MainPage extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           appBar: AppBar(
             elevation: 0,
@@ -101,13 +102,12 @@ class _MainPage extends State<MainPage> {
           body: SafeArea(
             child: Container(child: getBody()),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   Widget _buildBottomBar() {
-    final _inactiveColor = iconColor;
-    final _activeColor = primaryColor;
+    final inactiveColor = iconColor;
+    final activeColor = primaryColor;
 
     double height = getScreenPercentSize(context, 7.5);
     double iconHeight = getPercentSize(height, 28);
@@ -122,32 +122,32 @@ class _MainPage extends State<MainPage> {
       items: <BottomNavyBarItem>[
         BottomNavyBarItem(
           title: 'Home',
-          activeColor: _activeColor,
-          inactiveColor: _inactiveColor,
+          activeColor: activeColor,
+          inactiveColor: inactiveColor,
           textAlign: TextAlign.center,
           iconSize: iconHeight,
           imageName: "home bold.png",
         ),
         BottomNavyBarItem(
           title: 'Search',
-          activeColor: _activeColor,
-          inactiveColor: _inactiveColor,
+          activeColor: activeColor,
+          inactiveColor: inactiveColor,
           textAlign: TextAlign.center,
           iconSize: iconHeight,
           imageName: "search.png",
         ),
         BottomNavyBarItem(
           title: 'Cart',
-          activeColor: _activeColor,
-          inactiveColor: _inactiveColor,
+          activeColor: activeColor,
+          inactiveColor: inactiveColor,
           textAlign: TextAlign.center,
           iconSize: iconHeight,
           imageName: "orders.png",
         ),
         BottomNavyBarItem(
           title: 'All Pets',
-          activeColor: _activeColor,
-          inactiveColor: _inactiveColor,
+          activeColor: activeColor,
+          inactiveColor: inactiveColor,
           textAlign: TextAlign.center,
           iconSize: iconHeight,
           imageName: "pet.png",
@@ -155,9 +155,9 @@ class _MainPage extends State<MainPage> {
         BottomNavyBarItem(
             iconSize: iconHeight,
             title: 'Chat',
-            activeColor: _activeColor,
+            activeColor: activeColor,
             imageName: "chat.png",
-            inactiveColor: _inactiveColor,
+            inactiveColor: inactiveColor,
             textAlign: TextAlign.center),
       ],
     );

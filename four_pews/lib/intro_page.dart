@@ -170,6 +170,7 @@ class _IntroPage extends State<IntroPage> {
                       Visibility(
                         visible: (_position <= 2),
                         child: Expanded(
+                          flex: 1,
                           child: InkWell(
                             onTap: () {
                               skip();
@@ -181,7 +182,6 @@ class _IntroPage extends State<IntroPage> {
                                 FontWeight.bold,
                                 TextAlign.start),
                           ),
-                          flex: 1,
                         ),
                       ),
                       Visibility(
@@ -192,7 +192,7 @@ class _IntroPage extends State<IntroPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignUpPage(),
+                                    builder: (context) => const SignUpPage(),
                                   ));
                             },
                             child: Container(
@@ -206,11 +206,11 @@ class _IntroPage extends State<IntroPage> {
                                       color: textColor.withOpacity(0.1),
                                       blurRadius: 2,
                                       spreadRadius: 1,
-                                      offset: Offset(0, 4))
+                                      offset: const Offset(0, 4))
                                 ],
                                 shape: SmoothRectangleBorder(
-                                  side:
-                                      BorderSide(color: Colors.white, width: 2),
+                                  side: const BorderSide(
+                                      color: Colors.white, width: 2),
                                   borderRadius: SmoothBorderRadius(
                                     cornerRadius:
                                         getScreenPercentSize(context, 1.8),
@@ -262,7 +262,7 @@ class _IntroPage extends State<IntroPage> {
                                     color: textColor.withOpacity(0.1),
                                     blurRadius: 2,
                                     spreadRadius: 1,
-                                    offset: Offset(0, 4))
+                                    offset: const Offset(0, 4))
                               ],
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(

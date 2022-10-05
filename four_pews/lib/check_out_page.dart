@@ -28,7 +28,7 @@ class _CheckOutPage extends State<CheckOutPage> {
   void initState() {
     super.initState();
     addressList = DataFile.getAddressList();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -37,7 +37,7 @@ class _CheckOutPage extends State<CheckOutPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   getOption() {
@@ -52,6 +52,7 @@ class _CheckOutPage extends State<CheckOutPage> {
     double cellHeight = MediaQuery.of(context).size.width * 0.2;
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -105,7 +106,7 @@ class _CheckOutPage extends State<CheckOutPage> {
                             ),
                             ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: paymentModelList.length,
                                 itemBuilder: (context, index) {
                                   return InkWell(
@@ -141,6 +142,7 @@ class _CheckOutPage extends State<CheckOutPage> {
                                                         context, 2),
                                                   ),
                                                   Expanded(
+                                                    flex: 1,
                                                     child: Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -186,14 +188,14 @@ class _CheckOutPage extends State<CheckOutPage> {
                                                         ),
                                                       ],
                                                     ),
-                                                    flex: 1,
                                                   ),
                                                   Align(
                                                     alignment:
                                                         Alignment.centerRight,
                                                     child: Padding(
-                                                      padding: EdgeInsets.only(
-                                                          right: 3),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 3),
                                                       child: Icon(
                                                         (index == _selectedCard)
                                                             ? Icons
@@ -258,15 +260,14 @@ class _CheckOutPage extends State<CheckOutPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   bool isSaveCard = true;
-  TextEditingController cardNumberController = new TextEditingController();
-  TextEditingController cardHolderNameController = new TextEditingController();
-  TextEditingController expDateController = new TextEditingController();
-  TextEditingController cvvController = new TextEditingController();
+  TextEditingController cardNumberController = TextEditingController();
+  TextEditingController cardHolderNameController = TextEditingController();
+  TextEditingController expDateController = TextEditingController();
+  TextEditingController cvvController = TextEditingController();
   addNewCardDialog() {
     double height = getScreenPercentSize(context, 45);
     double radius = getScreenPercentSize(context, 3);
@@ -296,13 +297,13 @@ class _CheckOutPage extends State<CheckOutPage> {
                       Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: getTextWithFontFamilyWidget(
                                 'Credit Card',
                                 textColor,
                                 getPercentSize(height, 5),
                                 FontWeight.w500,
                                 TextAlign.start),
-                            flex: 1,
                           ),
                           InkWell(
                               onTap: () {
@@ -327,17 +328,17 @@ class _CheckOutPage extends State<CheckOutPage> {
                       Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: getDefaultTextFiledWithoutIconWidget(context,
                                 S.of(context).expDateHint, expDateController),
-                            flex: 1,
                           ),
                           SizedBox(
                             width: getScreenPercentSize(context, 1),
                           ),
                           Expanded(
+                            flex: 1,
                             child: getDefaultTextFiledWithoutIconWidget(
                                 context, S.of(context).cvvHint, cvvController),
-                            flex: 1,
                           )
                         ],
                       ),

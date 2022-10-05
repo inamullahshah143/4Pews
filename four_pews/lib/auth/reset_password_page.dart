@@ -13,20 +13,19 @@ class ResetPasswordPage extends StatefulWidget {
 }
 
 class _ResetPasswordPage extends State<ResetPasswordPage> {
-  TextEditingController textPasswordController = new TextEditingController();
-  TextEditingController textConfirmPasswordController =
-      new TextEditingController();
+  TextEditingController textPasswordController = TextEditingController();
+  TextEditingController textConfirmPasswordController = TextEditingController();
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
 
-    return new Future.value(false);
+    return Future.value(false);
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(const Duration(seconds: 0), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -37,18 +36,19 @@ class _ResetPasswordPage extends State<ResetPasswordPage> {
     SizeConfig().init(context);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
             backgroundColor: backgroundColor,
             elevation: 0,
-            title: Text(""),
+            title: const Text(""),
             leading: InkWell(
+              onTap: _requestPop,
               child: Icon(
                 Icons.keyboard_backspace,
                 color: textColor,
               ),
-              onTap: _requestPop,
             ),
           ),
           body: Container(
@@ -120,8 +120,7 @@ class _ResetPasswordPage extends State<ResetPasswordPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   void checkValidation() {

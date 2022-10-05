@@ -18,7 +18,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   @override
@@ -28,6 +28,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
     double padding = SizeConfig.safeBlockVertical! * 0.9;
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -75,7 +76,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                               FontWeight.w500,
                               TextAlign.start,
                               1),
-                          new Spacer(),
+                          const Spacer(),
                           Padding(
                             padding: EdgeInsets.only(right: padding),
                             child: Icon(
@@ -160,7 +161,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                       Container(
                         height: 0.3,
                         color: textColor,
-                        margin: EdgeInsets.only(bottom: 15, top: 15),
+                        margin: const EdgeInsets.only(bottom: 15, top: 15),
                       ),
                       Row(
                         children: [
@@ -171,7 +172,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                               FontWeight.w500,
                               TextAlign.start,
                               1),
-                          new Spacer(),
+                          const Spacer(),
                           getCustomTextWithFontFamilyWidget(
                               "\$24.20",
                               primaryColor,
@@ -190,18 +191,17 @@ class _OrderDetailPage extends State<OrderDetailPage>
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   Widget onDelivery() {
     double imageSize = SizeConfig.safeBlockVertical! * 10;
     double margin = SizeConfig.safeBlockVertical! * 2;
     return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: myOrderList.length,
             itemBuilder: (context, index) {
               return InkWell(
@@ -219,7 +219,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                             height: imageSize,
                             width: imageSize,
                             margin: EdgeInsets.only(right: margin),
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                                 shape: BoxShape.rectangle,
                                 color: cellColor,
@@ -232,6 +232,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                                     fit: BoxFit.cover)),
                           ),
                           Expanded(
+                            flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,7 +246,7 @@ class _OrderDetailPage extends State<OrderDetailPage>
                                         FontWeight.w400,
                                         TextAlign.start,
                                         1),
-                                    new Spacer(),
+                                    const Spacer(),
                                     getCustomTextWithFontFamilyWidget(
                                         "Quantity: ",
                                         textColor,
@@ -263,7 +264,8 @@ class _OrderDetailPage extends State<OrderDetailPage>
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                                  padding:
+                                      const EdgeInsets.only(top: 5, bottom: 5),
                                   child: getCustomTextWithFontFamilyWidget(
                                       myOrderList[index].price!,
                                       primaryColor,
@@ -274,13 +276,13 @@ class _OrderDetailPage extends State<OrderDetailPage>
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.brightness_1,
                                       color: Colors.grey,
                                       size: 10,
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 5),
+                                      padding: const EdgeInsets.only(left: 5),
                                       child: getCustomTextWidget(
                                           "Delivered at 11:14 am",
                                           textColor,
@@ -293,7 +295,6 @@ class _OrderDetailPage extends State<OrderDetailPage>
                                 ),
                               ],
                             ),
-                            flex: 1,
                           )
                         ],
                       ),

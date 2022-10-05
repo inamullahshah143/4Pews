@@ -18,7 +18,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
     with SingleTickerProviderStateMixin {
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   //
@@ -31,6 +31,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
 
     SizeConfig().init(context);
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -59,16 +60,17 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                     widget: Container(
                       margin: EdgeInsets.only(
                           top: 5, bottom: getScreenPercentSize(context, 3)),
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       decoration: getDecoration(15),
                       child: Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 5),
+                                  padding: const EdgeInsets.only(bottom: 5),
                                   child: getCustomTextWidget(
                                       "Delivery Man",
                                       textColor,
@@ -82,7 +84,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(right: 15),
+                                      margin: const EdgeInsets.only(right: 15),
                                       height: imageSize,
                                       width: imageSize,
                                       // margin: EdgeInsets.only(left: 15,right: 15,top: 15),
@@ -91,7 +93,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                                         color: Colors.transparent,
                                         image: DecorationImage(
                                           image: ExactAssetImage(
-                                              assetsPath + "hugh.png"),
+                                              "${assetsPath}hugh.png"),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -101,7 +103,8 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                                           CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(bottom: 5),
+                                          padding:
+                                              const EdgeInsets.only(bottom: 5),
                                           child: getCustomTextWidget(
                                               "Harry Daniels",
                                               textColor,
@@ -120,9 +123,11 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                                           itemCount: 5,
                                           tapOnlyMode: true,
                                           updateOnDrag: true,
-                                          itemPadding: EdgeInsets.symmetric(
-                                              horizontal: 0.0),
-                                          itemBuilder: (context, _) => Icon(
+                                          itemPadding:
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 0.0),
+                                          itemBuilder: (context, _) =>
+                                              const Icon(
                                             Icons.star,
                                             color: Colors.amber,
                                             size: 10,
@@ -137,12 +142,11 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                                 ),
                               ],
                             ),
-                            flex: 1,
                           ),
                           InkWell(
                             child: Container(
-                              margin: EdgeInsets.only(right: 8),
-                              padding: EdgeInsets.all(10),
+                              margin: const EdgeInsets.only(right: 8),
+                              padding: const EdgeInsets.all(10),
 
                               // margin: EdgeInsets.only(left: 15,right: 15,top: 15),
                               decoration: BoxDecoration(
@@ -162,8 +166,8 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                           ),
                           InkWell(
                             child: Container(
-                              margin: EdgeInsets.only(right: 8),
-                              padding: EdgeInsets.all(10),
+                              margin: const EdgeInsets.only(right: 8),
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: cellColor,
@@ -184,6 +188,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
 
                 // Timeline(children: items, position: TimelinePosition.center)
                 Expanded(
+                  flex: 1,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -197,13 +202,11 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                           "Delivered", 'Order delivered.', "4:00 pm", true),
                     ],
                   ),
-                  flex: 1,
                 )
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   void _callNumber(String s) async {}
@@ -224,20 +227,20 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
               Container(
                 width: 18,
                 height: 18,
-                decoration: new BoxDecoration(
+                decoration: BoxDecoration(
                   color: isSelect ? (primaryColor) : Colors.grey,
                   shape: BoxShape.circle,
                 ),
-                child: Text(""),
+                child: const Text(""),
               ),
               Container(
                 width: 3,
                 height: 50,
-                decoration: new BoxDecoration(
+                decoration: BoxDecoration(
                   color: isSelect ? (primaryColor) : Colors.grey,
                   shape: BoxShape.rectangle,
                 ),
-                child: Text(""),
+                child: const Text(""),
               ),
             ],
           ),
@@ -253,7 +256,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('$title',
+                    Text(title,
                         style: TextStyle(
                             fontFamily: fontFamily,
                             fontSize: getScreenPercentSize(context, 2),
@@ -291,7 +294,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
               SizedBox(
                 width: getWidthPercentSize(context, 2),
               ),
-              Text('$subTitle',
+              Text(subTitle,
                   style: TextStyle(
                       fontFamily: fontFamily,
                       fontSize: getScreenPercentSize(context, 1.8),
@@ -307,14 +310,14 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
   Widget mapWidget(String text, String subText) {
     return Container(
       height: SizeConfig.safeBlockVertical! * 30,
-      padding: EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.only(left: 15),
       child: Align(
         alignment: Alignment.bottomLeft,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             getCustomTextWithoutAlign(text, textColor, FontWeight.w800, 14),
-            new Spacer(),
+            const Spacer(),
             getCustomTextWidget(
                 subText, textColor, 10, FontWeight.w500, TextAlign.start, 1)
           ],
@@ -331,7 +334,7 @@ class _OrderTrackingPage extends State<OrderTrackingPage>
         shape: BoxShape.circle,
         color: primaryColor,
       ),
-      child: Center(
+      child: const Center(
         child: Icon(
           CupertinoIcons.checkmark_alt,
           color: Colors.white,

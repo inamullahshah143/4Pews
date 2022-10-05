@@ -52,7 +52,7 @@ Widget getBottomText(BuildContext context, String s, Function function) {
 getOutLineBorder(double radius) {
   return OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(radius)),
-    borderSide: BorderSide(color: Colors.white, width: 2),
+    borderSide: const BorderSide(color: Colors.white, width: 2),
   );
 }
 
@@ -244,12 +244,12 @@ Widget getPrescriptionDesc(BuildContext context, String s,
           if (hasFocus) {
             setState(() {
               isAutoFocus = true;
-              myFocusNode.canRequestFocus=true;
+              myFocusNode.canRequestFocus = true;
             });
           } else {
             setState(() {
               isAutoFocus = false;
-              myFocusNode.canRequestFocus=false;
+              myFocusNode.canRequestFocus = false;
             });
           }
         },
@@ -315,12 +315,12 @@ Widget getDefaultTextFiledWithoutIconWidget(BuildContext context, String s,
             if (hasFocus) {
               setState(() {
                 isAutoFocus = true;
-                myFocusNode.canRequestFocus=true;
+                myFocusNode.canRequestFocus = true;
               });
             } else {
               setState(() {
                 isAutoFocus = false;
-                myFocusNode.canRequestFocus=false;
+                myFocusNode.canRequestFocus = false;
               });
             }
           },
@@ -443,22 +443,18 @@ Widget getDefaultTextFiledWidget(BuildContext context, String s, var icon,
 
   Color color = borderColor;
 
-
   return StatefulBuilder(
     builder: (context, setState) {
-      myFocusNode.addListener((){
-
+      myFocusNode.addListener(() {
         print("focus---${myFocusNode.hasFocus}---$s");
 
-
-        setState((){
-          if(myFocusNode.hasFocus){
-            color=primaryColor;
-          }else{
+        setState(() {
+          if (myFocusNode.hasFocus) {
+            color = primaryColor;
+          } else {
             color = borderColor;
           }
         });
-
       });
       return Container(
         height: height,
@@ -469,10 +465,7 @@ Widget getDefaultTextFiledWidget(BuildContext context, String s, var icon,
         decoration: ShapeDecoration(
           color: cellColor,
           shape: SmoothRectangleBorder(
-            side: BorderSide(
-                color: color, width: 1
-
-            ),
+            side: BorderSide(color: color, width: 1),
             borderRadius: SmoothBorderRadius(
               cornerRadius: radius,
               cornerSmoothing: 0.8,
@@ -516,7 +509,7 @@ Widget getDefaultTextFiledWidget(BuildContext context, String s, var icon,
             decoration: InputDecoration(
                 contentPadding:
                     EdgeInsets.only(left: getWidthPercentSize(context, 4)),
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
@@ -562,7 +555,6 @@ Widget getCellMaterialWidget(
     BuildContext context, Widget widget, double radius, double height) {
   return Material(
     color: Colors.transparent,
-
     shadowColor: primaryColor.withOpacity(0.4),
     elevation: getPercentSize(height, 35),
     shape: RoundedRectangleBorder(
@@ -575,7 +567,6 @@ Widget getAddMaterialWidget(
     BuildContext context, Widget widget, double radius, double height) {
   return Material(
     color: Colors.transparent,
-
     shadowColor: primaryColor.withOpacity(0.3),
     elevation: getPercentSize(height, 25),
     shape: RoundedRectangleBorder(
@@ -584,12 +575,10 @@ Widget getAddMaterialWidget(
   );
 }
 
-
 Widget getMaterialWidget(
     BuildContext context, Widget widget, double radius, double height) {
   return Material(
     color: Colors.transparent,
-
     shadowColor: primaryColor.withOpacity(0.3),
     elevation: getPercentSize(height, 35),
     shape: RoundedRectangleBorder(
@@ -652,7 +641,7 @@ getDecorationWithColorRadius(double radius, Color color) {
           color: color.withOpacity(0.3),
           blurRadius: 4,
           spreadRadius: 4,
-          offset: Offset(0, 4))
+          offset: const Offset(0, 4))
     ],
     shape: SmoothRectangleBorder(
       side: BorderSide(color: iconColor, width: 0.1),
@@ -699,7 +688,7 @@ getAppBar(BuildContext context, String s,
                           }
                         },
                         child: Image.asset(
-                          assetsPath + "back.png",
+                          "${assetsPath}back.png",
                           height: getScreenPercentSize(context, 2.5),
                           color: textColor,
                         ))),
@@ -764,7 +753,7 @@ getDecorationWithBorder(double radius, {Color? color}) {
           color: subTextColor.withOpacity(0.1),
           blurRadius: 2,
           spreadRadius: 1,
-          offset: Offset(0, 1))
+          offset: const Offset(0, 1))
     ],
     shape: SmoothRectangleBorder(
       side: BorderSide(color: (color == null) ? borderColor : color, width: 1),
@@ -941,14 +930,14 @@ Widget getBackIcon(BuildContext context, Function function) {
         function();
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         height: appBarHeight,
         width: appBarHeight,
         decoration: BoxDecoration(
             color: cellColor,
             borderRadius: BorderRadius.all(
                 Radius.circular(getPercentSize(appBarHeight, 25)))),
-        child: Icon(
+        child: const Icon(
           Icons.keyboard_backspace,
           color: Colors.black,
         ),
@@ -988,12 +977,12 @@ Widget getPasswordTextFiled(BuildContext context, String s,
               if (hasFocus) {
                 setState(() {
                   isAutoFocus = true;
-                  myFocusNode.canRequestFocus=true;
+                  myFocusNode.canRequestFocus = true;
                 });
               } else {
                 setState(() {
                   isAutoFocus = false;
-                  myFocusNode.canRequestFocus=false;
+                  myFocusNode.canRequestFocus = false;
                 });
               }
             },
@@ -1222,7 +1211,7 @@ Widget getBlueButton(BuildContext context, Function function, String s) {
   double height = getScreenPercentSize(context, 7);
   double radius = getPercentSize(height, 25);
   double textSize = getPercentSize(height, 30);
-  return Container(
+  return SizedBox(
     height: height,
     child: GestureDetector(
       onTap: () {
@@ -1245,7 +1234,7 @@ Widget getButton(BuildContext context, Function function, String s) {
   double height = getScreenPercentSize(context, 6);
   double radius = getPercentSize(height, 12);
   double textSize = getPercentSize(height, 40);
-  return Container(
+  return SizedBox(
     height: height,
     child: GestureDetector(
       onTap: () {
@@ -1268,7 +1257,7 @@ Widget getBorderButton(BuildContext context, Function function, String s) {
   double height = getScreenPercentSize(context, 6);
   double radius = getPercentSize(height, 12);
   double textSize = getPercentSize(height, 40);
-  return Container(
+  return SizedBox(
     height: height,
     child: GestureDetector(
       onTap: () {

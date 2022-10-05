@@ -8,7 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationTrackMap extends StatefulWidget {
   final ProductModel model;
-  LocationTrackMap(this.model);
+  const LocationTrackMap(this.model);
   @override
   _LocationTrackMap createState() => _LocationTrackMap();
 }
@@ -33,8 +33,8 @@ class _LocationTrackMap extends State<LocationTrackMap> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    PolylineId polylineId = PolylineId("area");
-    PolylineId polylineId2 = PolylineId("area2");
+    PolylineId polylineId = const PolylineId("area");
+    PolylineId polylineId2 = const PolylineId("area2");
 
     double height = getScreenPercentSize(context, 6);
     defMargin = getHorizontalSpace(context);
@@ -59,7 +59,7 @@ class _LocationTrackMap extends State<LocationTrackMap> {
             backgroundColor: backgroundColor,
             title: getAppBarText(context, 'Track Order'),
           ),
-          body: Container(
+          body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Column(
@@ -142,7 +142,7 @@ class _LocationTrackMap extends State<LocationTrackMap> {
                           decoration:
                               getDecorationWithColor(radius, primaryColor),
                           child: Center(
-                            child: Image.asset(assetsPath + "filter bold.png",
+                            child: Image.asset("${assetsPath}filter bold.png",
                                 color: Colors.white,
                                 height: getPercentSize(height, 55)),
                           ),
@@ -166,7 +166,7 @@ class _LocationTrackMap extends State<LocationTrackMap> {
                         rotateGesturesEnabled: false,
                         scrollGesturesEnabled: true,
                         tiltGesturesEnabled: false,
-                        initialCameraPosition: CameraPosition(
+                        initialCameraPosition: const CameraPosition(
                           target: LatLng(
                               40.91163687464769 + 30, -74.52864461445306 + 30),
 
@@ -174,8 +174,8 @@ class _LocationTrackMap extends State<LocationTrackMap> {
 
                           zoom: 7,
                         ),
-                        markers: Set<Marker>.of(<Marker>[
-                          Marker(
+                        markers: <Marker>{
+                          const Marker(
                               markerId: MarkerId("Ey"),
                               position: LatLng(40.91163687464769 + 30,
                                   -74.52864461445306 + 30),
@@ -185,8 +185,8 @@ class _LocationTrackMap extends State<LocationTrackMap> {
                                 title: "Estimated Time",
                                 snippet: "5-10 min",
                               )),
-                        ]),
-                        polylines: Set<Polyline>.of(<Polyline>[
+                        },
+                        polylines: <Polyline>{
                           Polyline(
                               polylineId: polylineId,
                               points: getPoints(),
@@ -199,16 +199,16 @@ class _LocationTrackMap extends State<LocationTrackMap> {
                               width: 5,
                               color: Colors.grey,
                               visible: true)
-                        ]),
-                        polygons: Set<Polygon>.of(<Polygon>[
+                        },
+                        polygons: <Polygon>{
                           Polygon(
-                              polygonId: PolygonId('area'),
+                              polygonId: const PolygonId('area'),
                               points: getPoints(),
                               strokeColor: Colors.pink,
                               strokeWidth: 5,
                               fillColor: Colors.transparent,
                               visible: true),
-                        ]),
+                        },
                       ),
                       Align(
                         alignment: Alignment.bottomCenter,
@@ -275,7 +275,7 @@ class _LocationTrackMap extends State<LocationTrackMap> {
                     Row(
                       children: [
                         Image.asset(
-                          assetsPath + "location.png",
+                          "${assetsPath}location.png",
                           height: getPercentSize(height, 14),
                         ),
                         SizedBox(
@@ -313,9 +313,9 @@ class _LocationTrackMap extends State<LocationTrackMap> {
 
   getPoints() {
     return [
-      LatLng(40.91163687464769, -74.52864461445306),
+      const LatLng(40.91163687464769, -74.52864461445306),
       // LatLng(21.2117 - 15, 72.8858 - 15),
-      LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
+      const LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
     ];
   }
 
@@ -324,8 +324,8 @@ class _LocationTrackMap extends State<LocationTrackMap> {
       // LatLng(21.2089, 72.8907),
       // LatLng(21.2089 + 20, 72.8907 + 20),
 
-      LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
-      LatLng(40.91163687464769 + 50, -74.52864461445306 + 50),
+      const LatLng(40.91163687464769 + 30, -74.52864461445306 + 30),
+      const LatLng(40.91163687464769 + 50, -74.52864461445306 + 50),
 
       // LatLng(21.2084, 72.8990),
     ];

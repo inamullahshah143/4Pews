@@ -29,7 +29,7 @@ class _ConfirmationPage extends State<ConfirmationPage> {
   void initState() {
     super.initState();
     addressList = DataFile.getAddressList();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setThemePosition(context: context);
       setState(() {});
     });
@@ -38,7 +38,7 @@ class _ConfirmationPage extends State<ConfirmationPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   getOption() {
@@ -56,6 +56,7 @@ class _ConfirmationPage extends State<ConfirmationPage> {
     double height = getScreenPercentSize(context, 12);
     double imageSize = getPercentSize(height, 67);
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -157,13 +158,14 @@ class _ConfirmationPage extends State<ConfirmationPage> {
                                 Row(
                                   children: [
                                     Image.asset(
-                                      assetsPath + 'paypal.png',
+                                      '${assetsPath}paypal.png',
                                       height: getScreenPercentSize(context, 4),
                                     ),
                                     SizedBox(
                                       width: getScreenPercentSize(context, 2),
                                     ),
                                     Expanded(
+                                      flex: 1,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
@@ -189,7 +191,6 @@ class _ConfirmationPage extends State<ConfirmationPage> {
                                           )
                                         ],
                                       ),
-                                      flex: 1,
                                     ),
                                   ],
                                 ),
@@ -218,7 +219,8 @@ class _ConfirmationPage extends State<ConfirmationPage> {
                                   height: getScreenPercentSize(context, 1),
                                 ),
                                 ListView.separated(
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     separatorBuilder: (context, index) {
                                       return Container(
                                         height: 1,
@@ -346,8 +348,7 @@ class _ConfirmationPage extends State<ConfirmationPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   getRow(String s, String s1, {bool? isTotal}) {
@@ -399,10 +400,10 @@ class _ConfirmationPage extends State<ConfirmationPage> {
   }
 
   bool isSaveCard = true;
-  TextEditingController cardNumberController = new TextEditingController();
-  TextEditingController cardHolderNameController = new TextEditingController();
-  TextEditingController expDateController = new TextEditingController();
-  TextEditingController cvvController = new TextEditingController();
+  TextEditingController cardNumberController = TextEditingController();
+  TextEditingController cardHolderNameController = TextEditingController();
+  TextEditingController expDateController = TextEditingController();
+  TextEditingController cvvController = TextEditingController();
   addNewCardDialog() {
     double height = getScreenPercentSize(context, 45);
     double radius = getScreenPercentSize(context, 3);
@@ -432,13 +433,13 @@ class _ConfirmationPage extends State<ConfirmationPage> {
                       Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: getTextWithFontFamilyWidget(
                                 'Credit Card',
                                 textColor,
                                 getPercentSize(height, 5),
                                 FontWeight.w500,
                                 TextAlign.start),
-                            flex: 1,
                           ),
                           InkWell(
                               onTap: () {
@@ -463,17 +464,17 @@ class _ConfirmationPage extends State<ConfirmationPage> {
                       Row(
                         children: [
                           Expanded(
+                            flex: 1,
                             child: getDefaultTextFiledWithoutIconWidget(context,
                                 S.of(context).expDateHint, expDateController),
-                            flex: 1,
                           ),
                           SizedBox(
                             width: getScreenPercentSize(context, 1),
                           ),
                           Expanded(
+                            flex: 1,
                             child: getDefaultTextFiledWithoutIconWidget(
                                 context, S.of(context).cvvHint, cvvController),
-                            flex: 1,
                           )
                         ],
                       ),

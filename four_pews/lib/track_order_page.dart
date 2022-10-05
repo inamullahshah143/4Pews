@@ -10,7 +10,7 @@ import 'package:four_pews/utils/size_config.dart';
 class TrackOrderPage extends StatefulWidget {
   final Function? function;
 
-  TrackOrderPage({this.function});
+  const TrackOrderPage({this.function});
 
   @override
   _TrackOrderPage createState() {
@@ -31,10 +31,10 @@ class _TrackOrderPage extends State<TrackOrderPage> {
       widget.function!();
     } else {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainPage()));
+          context, MaterialPageRoute(builder: (context) => const MainPage()));
     }
 
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   void doNothing(BuildContext context) {}
@@ -50,6 +50,7 @@ class _TrackOrderPage extends State<TrackOrderPage> {
     double imageSize = getPercentSize(height, 67);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -102,7 +103,7 @@ class _TrackOrderPage extends State<TrackOrderPage> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(radius),
                                   child: Image.asset(
-                                    assetsPath + 'cat_1.png',
+                                    '${assetsPath}cat_1.png',
                                     fit: BoxFit.fill,
                                   ),
                                 )),
@@ -173,13 +174,13 @@ class _TrackOrderPage extends State<TrackOrderPage> {
                                 FontWeight.w400,
                                 TextAlign.start),
                             Expanded(
+                              flex: 1,
                               child: getTextWidget(
                                   '546859',
                                   textColor,
                                   getScreenPercentSize(context, 1.8),
                                   FontWeight.w400,
                                   TextAlign.start),
-                              flex: 1,
                             ),
                           ],
                         ),
@@ -197,8 +198,7 @@ class _TrackOrderPage extends State<TrackOrderPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   getCell(String s) {
@@ -214,16 +214,16 @@ class _TrackOrderPage extends State<TrackOrderPage> {
           child: Row(
             children: [
               Expanded(
+                flex: 1,
                 child: getTextWidget(
                     s,
                     textColor,
                     getScreenPercentSize(context, 1.8),
                     FontWeight.w400,
                     TextAlign.start),
-                flex: 1,
               ),
               Image.asset(
-                assetsPath + "right-chevron.png",
+                "${assetsPath}right-chevron.png",
                 height: getScreenPercentSize(context, 2),
                 color: textColor,
               )
@@ -248,7 +248,7 @@ class _TrackOrderPage extends State<TrackOrderPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: size,
                   height: size,
                   // decoration: new BoxDecoration(
@@ -263,13 +263,13 @@ class _TrackOrderPage extends State<TrackOrderPage> {
                           color: primaryColor,
                         )
                       : Image.asset(
-                          assetsPath + "un_selected_check.png",
+                          "${assetsPath}un_selected_check.png",
                           height: size,
                           width: size,
                           color: subTextColor,
                         ),
                 ),
-                Container(
+                SizedBox(
                   width: getWidthPercentSize(context, 0.2),
                   height: (isSelect) ? height : 0,
                   child: (isSelect)
@@ -304,7 +304,7 @@ class _TrackOrderPage extends State<TrackOrderPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('$title',
+                      Text(title,
                           style: TextStyle(
                               fontFamily: fontFamily,
                               fontSize: getScreenPercentSize(context, 1.6),

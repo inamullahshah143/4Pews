@@ -19,28 +19,28 @@ class DataFile {
   static List<OrderModel> getOrderList() {
     List<OrderModel> subCatList = [];
 
-    OrderModel mainModel = new OrderModel();
+    OrderModel mainModel = OrderModel();
     mainModel.id = 1;
     mainModel.orderId = "#0012345";
     mainModel.items = "12 Items";
     mainModel.type = "On Delivery";
     subCatList.add(mainModel);
 
-    mainModel = new OrderModel();
+    mainModel = OrderModel();
     mainModel.id = 2;
     mainModel.orderId = "#0012346";
     mainModel.items = "5 Items";
     mainModel.type = "Completed";
     subCatList.add(mainModel);
 
-    mainModel = new OrderModel();
+    mainModel = OrderModel();
     mainModel.id = 3;
     mainModel.orderId = "#0012347";
     mainModel.items = "10 Items";
     mainModel.type = "Canceled";
     subCatList.add(mainModel);
 
-    mainModel = new OrderModel();
+    mainModel = OrderModel();
     mainModel.id = 4;
     mainModel.orderId = "#0012348";
     mainModel.items = "8 Items";
@@ -53,25 +53,25 @@ class DataFile {
   static List<OrderDescModel> getOrderDescList() {
     List<OrderDescModel> subCatList = [];
 
-    OrderDescModel mainModel = new OrderDescModel();
+    OrderDescModel mainModel = OrderDescModel();
     mainModel.name = "Order Placed";
     mainModel.desc = "January 19th,12:02 AM";
     mainModel.completed = 1;
     subCatList.add(mainModel);
 
-    mainModel = new OrderDescModel();
+    mainModel = OrderDescModel();
     mainModel.name = "Order Confirmed";
     mainModel.desc = "January 19th,12:02 AM";
     mainModel.completed = 1;
     subCatList.add(mainModel);
 
-    mainModel = new OrderDescModel();
+    mainModel = OrderDescModel();
     mainModel.name = "Your Order On Delivery by Courier";
     mainModel.desc = "January 19th,12:02 AM";
     mainModel.completed = 1;
     subCatList.add(mainModel);
 
-    mainModel = new OrderDescModel();
+    mainModel = OrderDescModel();
     mainModel.name = "Order Delivered";
     mainModel.desc = "January 19th,12:02 AM";
     mainModel.completed = 0;
@@ -83,7 +83,7 @@ class DataFile {
   static List<CardModel> getCardList() {
     List<CardModel> subCatList = [];
 
-    CardModel mainModel = new CardModel();
+    CardModel mainModel = CardModel();
     mainModel.id = 1;
     mainModel.email = "chloe_bird@gmail.com";
     mainModel.cardNo = "2342 22** **** **00";
@@ -94,7 +94,7 @@ class DataFile {
 
     subCatList.add(mainModel);
 
-    mainModel = new CardModel();
+    mainModel = CardModel();
     mainModel.id = 2;
     mainModel.email = "chloe_bird@gmail.com";
     mainModel.cardNo = "2342 22** **** **00";
@@ -124,7 +124,7 @@ class DataFile {
   }
 
   static ProfileModel getProfileModel() {
-    ProfileModel mainModel = new ProfileModel();
+    ProfileModel mainModel = ProfileModel();
     mainModel.email = "chloe_bird@gamil.com";
     mainModel.name = "Chloe B Bird";
     mainModel.image = "hugh.png";
@@ -134,21 +134,21 @@ class DataFile {
   static List<PaymentCardModel> getPaymentCardList() {
     List<PaymentCardModel> subCatList = [];
 
-    PaymentCardModel mainModel = new PaymentCardModel();
+    PaymentCardModel mainModel = PaymentCardModel();
     mainModel.id = 1;
     mainModel.name = "Credit Card";
     mainModel.image = "visa.png";
     mainModel.desc = "XXX XXX XXX 1234";
     subCatList.add(mainModel);
 
-    mainModel = new PaymentCardModel();
+    mainModel = PaymentCardModel();
     mainModel.id = 2;
     mainModel.name = "Bank Account";
     mainModel.desc = "Ending in 9457";
     mainModel.image = "bank-building.png";
     subCatList.add(mainModel);
 
-    mainModel = new PaymentCardModel();
+    mainModel = PaymentCardModel();
     mainModel.id = 3;
     mainModel.name = "PayPal";
     mainModel.desc = "paypal@gmail.com";
@@ -161,7 +161,7 @@ class DataFile {
   static List<AddressModel> getAddressList() {
     List<AddressModel> subCatList = [];
 
-    AddressModel mainModel = new AddressModel();
+    AddressModel mainModel = AddressModel();
     mainModel.id = 1;
     mainModel.name = "Chloe B Bird";
     mainModel.phoneNumber = "+1(368)68 000 068";
@@ -169,7 +169,7 @@ class DataFile {
     mainModel.type = "Home";
     subCatList.add(mainModel);
 
-    mainModel = new AddressModel();
+    mainModel = AddressModel();
     mainModel.id = 2;
     mainModel.name = "Rich P. Jeffery";
     mainModel.phoneNumber = "+1(368)68 000 068";
@@ -184,7 +184,7 @@ class DataFile {
   static List<ReviewModel> getReviewList() {
     List<ReviewModel> subCatList = [];
 
-    ReviewModel mainModel = new ReviewModel();
+    ReviewModel mainModel = ReviewModel();
     mainModel.id = 1;
     mainModel.name = "Spearman";
     mainModel.image = "hugh.png";
@@ -193,7 +193,7 @@ class DataFile {
     mainModel.review = 4;
     subCatList.add(mainModel);
 
-    mainModel = new ReviewModel();
+    mainModel = ReviewModel();
     mainModel.id = 2;
     mainModel.name = "Aisha";
     mainModel.image = "hugh.png";
@@ -202,7 +202,7 @@ class DataFile {
     mainModel.review = 3;
     subCatList.add(mainModel);
 
-    mainModel = new ReviewModel();
+    mainModel = ReviewModel();
     mainModel.id = 3;
     mainModel.image = "hugh.png";
     mainModel.name = "Jock Borden";
@@ -274,7 +274,7 @@ class DataFile {
   static List<IntroModel> getIntroModel() {
     List<IntroModel> introList = [];
 
-    IntroModel mainModel = new IntroModel();
+    IntroModel mainModel = IntroModel();
     mainModel.id = 1;
     mainModel.name = "Find The Nearest\nPets From You";
     mainModel.image = "intro_1.png";
@@ -284,7 +284,7 @@ class DataFile {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
     introList.add(mainModel);
 
-    mainModel = new IntroModel();
+    mainModel = IntroModel();
     mainModel.id = 2;
     mainModel.name = "All Pets Deserves\nMore Care";
     mainModel.color = "#5EB7CB".toColor();
@@ -294,7 +294,7 @@ class DataFile {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
     introList.add(mainModel);
 
-    mainModel = new IntroModel();
+    mainModel = IntroModel();
     mainModel.id = 3;
     mainModel.name = "Adopt your own pet\nas a friend";
     mainModel.color = "#FDD7E4".toColor();
@@ -305,7 +305,7 @@ class DataFile {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
     introList.add(mainModel);
 
-    mainModel = new IntroModel();
+    mainModel = IntroModel();
     mainModel.id = 4;
     mainModel.name = "All Pets Adopt\nNeeds Are here";
     mainModel.color = "#FED845".toColor();
@@ -322,7 +322,7 @@ class DataFile {
   static List<ProductModel> getProductModel() {
     List<ProductModel> subList = [];
 
-    ProductModel model = new ProductModel();
+    ProductModel model = ProductModel();
     model.name = "Bella";
     model.subTitle = "Original Chose";
     model.image = "cat_1.png";
@@ -334,7 +334,7 @@ class DataFile {
     model.icon = "product_4.png";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Mack";
     model.subTitle = "Original Chose";
     model.address = "Taxila";
@@ -347,7 +347,7 @@ class DataFile {
     model.desc = "Male, 1 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Pomeranian";
     model.subTitle = "Original Chose";
     model.image = "cat_product_1.png";
@@ -360,7 +360,7 @@ class DataFile {
     model.icon = "product_1.png";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Mack";
     model.subTitle = "Original Chose";
     model.icon = "product_4.png";
@@ -373,7 +373,7 @@ class DataFile {
     model.offerPrice = "\$32";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Krueger";
     model.subTitle = "Original Chose";
     model.image = "product.png";
@@ -386,7 +386,7 @@ class DataFile {
     model.offerPrice = "\$10";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Dodging";
     model.icon = "product_2.png";
     model.subTitle = "Original Chose";
@@ -399,7 +399,7 @@ class DataFile {
     model.offerPrice = "\$10";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Pomeranian";
     model.subText = "Whisks wet cat food";
 
@@ -426,7 +426,7 @@ class DataFile {
   static List<ProductModel> getAdoptModel() {
     List<ProductModel> subList = [];
 
-    ProductModel model = new ProductModel();
+    ProductModel model = ProductModel();
     model.name = "Bella";
     model.subTitle = "Original Chose";
     model.image = "adopt_1.png";
@@ -436,7 +436,7 @@ class DataFile {
     model.desc = "Female, 1.5 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Mack";
     model.subTitle = "Original Chose";
     model.address = "Taxila";
@@ -446,7 +446,7 @@ class DataFile {
     model.desc = "Male, 1 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Pomeranian";
     model.subTitle = "Original Chose";
     model.image = "adopt_3.png";
@@ -456,7 +456,7 @@ class DataFile {
     model.desc = "Female, 2 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Mack";
     model.subTitle = "Original Chose";
     model.desc = "Male, 2 Years";
@@ -466,7 +466,7 @@ class DataFile {
     model.offerPrice = "\$32";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Krueger";
     model.subTitle = "Original Chose";
     model.image = "adopt_5.png";
@@ -476,7 +476,7 @@ class DataFile {
     model.offerPrice = "\$10";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Dodging";
     model.subTitle = "Original Chose";
     model.image = "adopt_6.png";
@@ -492,7 +492,7 @@ class DataFile {
   static List<ProductModel> getCartModel() {
     List<ProductModel> subList = [];
 
-    ProductModel model = new ProductModel();
+    ProductModel model = ProductModel();
     model.name = "Bella";
     model.subTitle = "Original Chose";
     model.image = "cat_1.png";
@@ -502,7 +502,7 @@ class DataFile {
     model.desc = "Female, 1.5 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Mack";
     model.subTitle = "Original Chose";
     model.address = "Taxila(2 km)";
@@ -512,7 +512,7 @@ class DataFile {
     model.desc = "Male, 1 Years";
     subList.add(model);
 
-    model = new ProductModel();
+    model = ProductModel();
     model.name = "Pomeranian";
     model.subTitle = "Original Chose";
     model.image = "cat_product_1.png";

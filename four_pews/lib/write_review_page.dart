@@ -67,7 +67,7 @@ class _WriteReviewPage extends State<WriteReviewPage> {
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      assetsPath + 'rate.png',
+                      '${assetsPath}rate.png',
                       height: SizeConfig.safeBlockVertical! * 25,
                     ),
                   ),
@@ -169,7 +169,7 @@ class _WriteReviewPage extends State<WriteReviewPage> {
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: subTextColor),
                                   ),
-                                  focusedBorder: UnderlineInputBorder(
+                                  focusedBorder: const UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.white),
                                   ),
                                 ),

@@ -14,43 +14,44 @@ class ForgotPasswordPage extends StatefulWidget {
 
 class _ForgotPasswordPage extends State<ForgotPasswordPage> {
   int themeMode = 0;
-  TextEditingController phoneController = new TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   String countryCode = "IN";
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
 
-    return new Future.value(false);
+    return Future.value(false);
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(const Duration(seconds: 0), () {
       setThemePosition(context: context);
       setState(() {});
     });
   }
 
-  TextEditingController textNameController = new TextEditingController();
+  TextEditingController textNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
             backgroundColor: backgroundColor,
             elevation: 0,
-            title: Text(""),
+            title: const Text(""),
             leading: InkWell(
+              onTap: _requestPop,
               child: Icon(
                 Icons.keyboard_backspace,
                 color: textColor,
               ),
-              onTap: _requestPop,
             ),
           ),
           body: Container(
@@ -113,8 +114,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   void sendPage() {

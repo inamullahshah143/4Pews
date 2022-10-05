@@ -2,16 +2,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefData {
   static String packageName = "hair_salon_";
-  static String signIn = packageName + "signIn";
-  static String isIntro = packageName + "isIntro";
-  static String mode = packageName + "mode";
-  static String isPet = packageName + "isPet";
-  static String isAdoptionPet = packageName + "isAdoptionPet";
-  static String isCart = packageName + "isCart";
-  static String isNotification = packageName + "isNotification";
-  static String isOrder = packageName + "isOrder";
-  static String isAddress = packageName + "iAddress";
-
+  static String signIn = "${packageName}signIn";
+  static String isIntro = "${packageName}isIntro";
+  static String mode = "${packageName}mode";
+  static String isPet = "${packageName}isPet";
+  static String isAdoptionPet = "${packageName}isAdoptionPet";
+  static String isCart = "${packageName}isCart";
+  static String isNotification = "${packageName}isNotification";
+  static String isOrder = "${packageName}isOrder";
+  static String isAddress = "${packageName}iAddress";
 
   static setIsAddress(bool isFav) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,8 +32,6 @@ class PrefData {
     return prefs.getBool(isOrder) ?? false;
   }
 
-
-
   static setIsNotification(bool isFav) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(isNotification, isFav);
@@ -44,7 +41,6 @@ class PrefData {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool(isNotification) ?? false;
   }
-
 
   static setIsCart(bool isFav) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -65,7 +61,6 @@ class PrefData {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool(isAdoptionPet) ?? false;
   }
-
 
   static setIsPet(bool isFav) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -16,9 +16,9 @@ class EditPetPage extends StatefulWidget {
 
 class _EditPetPage extends State<EditPetPage> {
   List<ProductModel> productList = DataFile.getProductModel();
-  TextEditingController textEditingController = new TextEditingController();
-  TextEditingController textWeightController = new TextEditingController();
-  TextEditingController textDescController = new TextEditingController();
+  TextEditingController textEditingController = TextEditingController();
+  TextEditingController textWeightController = TextEditingController();
+  TextEditingController textDescController = TextEditingController();
 
   double cellHeight = 0;
 
@@ -36,7 +36,7 @@ class _EditPetPage extends State<EditPetPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   void doNothing(BuildContext context) {}
@@ -56,6 +56,7 @@ class _EditPetPage extends State<EditPetPage> {
     fontSize = getPercentSize(cellHeight, 28);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -73,6 +74,7 @@ class _EditPetPage extends State<EditPetPage> {
                   height: getScreenPercentSize(context, 1.5),
                 ),
                 Expanded(
+                  flex: 1,
                   child: ListView(
                     shrinkWrap: true,
                     primary: true,
@@ -90,12 +92,12 @@ class _EditPetPage extends State<EditPetPage> {
                       SizedBox(
                         height: margin,
                       ),
-                      Container(
+                      SizedBox(
                         height: height,
                         child: Stack(
                           children: [
                             Image.asset(
-                              assetsPath + "new_pet.png",
+                              "${assetsPath}new_pet.png",
                               height: height,
                               fit: BoxFit.fill,
                               width: double.infinity,
@@ -109,12 +111,12 @@ class _EditPetPage extends State<EditPetPage> {
                                     getScreenPercentSize(context, 1.5)),
                                 padding:
                                     EdgeInsets.all(getPercentSize(height, 3)),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black38),
                                 child: Center(
                                   child: Image.asset(
-                                    assetsPath + "edit.png",
+                                    "${assetsPath}edit.png",
                                     color: Colors.white,
                                   ),
                                 ),
@@ -146,7 +148,6 @@ class _EditPetPage extends State<EditPetPage> {
                           context, "Description", textDescController),
                     ],
                   ),
-                  flex: 1,
                 ),
                 getButtonWidget(context, "Save", primaryColor, () {
                   PrefData.setIsPet(true);
@@ -158,8 +159,7 @@ class _EditPetPage extends State<EditPetPage> {
               ],
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 
   getShapeDecoration() {
@@ -246,7 +246,7 @@ class _EditPetPage extends State<EditPetPage> {
               width: fontSize,
             ),
             Image.asset(
-              assetsPath + "calender.png",
+              "${assetsPath}calender.png",
               height: (fontSize * 1.3),
               color: textColor,
             ),
@@ -314,7 +314,7 @@ class _EditPetPage extends State<EditPetPage> {
         isDense: true,
         isExpanded: true,
         icon: Image.asset(
-          assetsPath + "down-arrow.png",
+          "${assetsPath}down-arrow.png",
           color: textColor,
           height: fontSize,
         ),
@@ -370,7 +370,7 @@ class _EditPetPage extends State<EditPetPage> {
         isDense: true,
         isExpanded: true,
         icon: Image.asset(
-          assetsPath + "down-arrow.png",
+          "${assetsPath}down-arrow.png",
           color: textColor,
           height: fontSize,
         ),

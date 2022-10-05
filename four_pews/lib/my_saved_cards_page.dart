@@ -29,7 +29,7 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
-    return new Future.value(true);
+    return Future.value(true);
   }
 
   @override
@@ -37,6 +37,7 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
     SizeConfig().init(context);
 
     return WillPopScope(
+        onWillPop: _requestPop,
         child: Scaffold(
           backgroundColor: backgroundColor,
           appBar: AppBar(
@@ -68,11 +69,12 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
                     height: getScreenPercentSize(context, 2),
                   ),
                   Expanded(
+                    flex: 1,
                     child: ListView.builder(
                         shrinkWrap: true,
                         padding: EdgeInsets.symmetric(
                             horizontal: getHorizontalSpace(context)),
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: paymentModelList.length,
                         itemBuilder: (context, index) {
                           return getMaterialCell(context,
@@ -119,6 +121,7 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
                                                 context, 2),
                                           ),
                                           Expanded(
+                                            flex: 1,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
@@ -157,7 +160,6 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
                                                 ),
                                               ],
                                             ),
-                                            flex: 1,
                                           )
                                         ],
                                       ),
@@ -170,7 +172,6 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
                                 },
                               ));
                         }),
-                    flex: 1,
                   ),
 //
 //                   getBottomText(context, S.of(context).newCard,
@@ -191,7 +192,7 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AddNewCardPage(),
+                            builder: (context) => const AddNewCardPage(),
                           ));
                     }),
                   )
@@ -199,7 +200,6 @@ class _MySavedCardsPage extends State<MySavedCardsPage> {
               ),
             ),
           ),
-        ),
-        onWillPop: _requestPop);
+        ));
   }
 }
