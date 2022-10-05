@@ -1,4 +1,4 @@
-package com.example.four_pews_admin
+package com.ishahz.four_pews_admin
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.four_pews_admin">
+    package="com.ishahz.four_pews_admin">
    <application
         android:label="four_pews_admin"
         android:name="${applicationName}"
