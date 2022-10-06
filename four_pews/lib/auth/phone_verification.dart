@@ -9,19 +9,19 @@ import 'sign_in_page.dart';
 
 class PhoneVerification extends StatefulWidget {
   final bool isSignUp;
-
-  const PhoneVerification(this.isSignUp);
-
+  final dynamic result; 
+  const PhoneVerification({super.key, required this.isSignUp, this.result});
   @override
-  _PhoneVerification createState() {
-    return _PhoneVerification();
-  }
+  State<PhoneVerification> createState() => _PhoneVerificationState();
 }
 
-class _PhoneVerification extends State<PhoneVerification> {
+class _PhoneVerificationState extends State<PhoneVerification> {
   bool isRemember = false;
+
   int themeMode = 0;
+
   TextEditingController textEmailController = TextEditingController();
+
   TextEditingController textPasswordController = TextEditingController();
 
   Future<bool> _requestPop() {
@@ -31,8 +31,9 @@ class _PhoneVerification extends State<PhoneVerification> {
 
   final GlobalKey<FormFieldState<String>> _formKey =
       GlobalKey<FormFieldState<String>>(debugLabel: '_formKey');
-  final TextEditingController _pinEditingController =
-      TextEditingController(text: '123');
+
+  final TextEditingController _pinEditingController = TextEditingController();
+
   final bool _enable = true;
 
   @override

@@ -6,16 +6,18 @@ import 'package:four_pews/utils/size_config.dart';
 import 'phone_verification.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
+
   @override
-  _ForgotPasswordPage createState() {
-    return _ForgotPasswordPage();
-  }
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _ForgotPasswordPage extends State<ForgotPasswordPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   int themeMode = 0;
+
   TextEditingController phoneController = TextEditingController();
-  String countryCode = "IN";
+
+  String countryCode = "PK";
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
@@ -62,7 +64,6 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                 SizedBox(
                   height: getScreenPercentSize(context, 3),
                 ),
-
                 getTextWithFontFamilyWidget(
                   "Forgot Password",
                   textColor,
@@ -70,11 +71,9 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                   FontWeight.w400,
                   TextAlign.left,
                 ),
-
                 SizedBox(
                   height: getScreenPercentSize(context, 0.7),
                 ),
-
                 getTextWidget(
                   "We need your registration email to send you password reset code!",
                   textColor,
@@ -82,24 +81,6 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
                   FontWeight.w400,
                   TextAlign.left,
                 ),
-
-                // getTextWidget(
-                //   "Forgot Password",
-                //   textColor,
-                //   getScreenPercentSize(context, 4),
-                //   FontWeight.bold,
-                //   TextAlign.left,
-                // ),
-                // SizedBox(
-                //   height: getScreenPercentSize(context, 0.5),
-                // ),
-                // getTextWidget(
-                //   "We need your registration email to send you password reset code!",
-                //   subTextColor,
-                //   getScreenPercentSize(context, 1.8),
-                //   FontWeight.w400,
-                //   TextAlign.start,
-                // ),
                 SizedBox(
                   height: getScreenPercentSize(context, 3),
                 ),
@@ -122,7 +103,7 @@ class _ForgotPasswordPage extends State<ForgotPasswordPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PhoneVerification(false),
+          builder: (context) => const PhoneVerification(isSignUp: false),
         ));
   }
 }

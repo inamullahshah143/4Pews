@@ -74,3 +74,29 @@ void exitApp() {
     SystemNavigator.pop();
   }
 }
+
+showSnackBar(BuildContext context, String message) {
+  final snackBar = SnackBar(
+    content: Text(message),
+    backgroundColor: primaryColor,
+    behavior: SnackBarBehavior.floating,
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+}
+
+showAlertDialog(BuildContext context) {
+  AlertDialog alert = const AlertDialog(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    content: Center(
+      child: CircularProgressIndicator(),
+    ),
+  );
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
