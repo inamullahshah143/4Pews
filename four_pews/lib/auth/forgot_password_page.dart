@@ -3,8 +3,6 @@ import 'package:four_pews/utils/constant.dart';
 import 'package:four_pews/utils/custom_widget.dart';
 import 'package:four_pews/utils/size_config.dart';
 
-import 'phone_verification.dart';
-
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -17,7 +15,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextEditingController phoneController = TextEditingController();
 
-  String countryCode = "PK";
+  String? countryCode;
 
   Future<bool> _requestPop() {
     Navigator.of(context).pop();
@@ -99,11 +97,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   void sendPage() {
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const PhoneVerification(isSignUp: false),
-        ));
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => const PhoneVerification(isSignUp: false),
+    //     ));
   }
 }

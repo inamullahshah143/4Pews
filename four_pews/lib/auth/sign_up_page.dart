@@ -23,6 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   bool isRemember = false;
 
   int themeMode = 0;
+  String? countyCode;
 
   TextEditingController textEmailController = TextEditingController();
   TextEditingController textNameController = TextEditingController();
@@ -143,7 +144,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   size: getScreenPercentSize(context, 3),
                                   color: textColor),
                               onChanged: (value) {
-                                
+                                setState(() {
+                                  countyCode = value.dialCode;
+                                });
                               },
                               initialSelection: 'PK',
                               searchStyle: TextStyle(
@@ -348,6 +351,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 builder: (context) => PhoneVerification(
                                   isSignUp: true,
                                   result: result,
+                                  phoneNo:
+                                      '$countyCode${textPhoneController.text}',
                                 ),
                               ),
                             );
