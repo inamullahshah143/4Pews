@@ -2,7 +2,6 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:four_pews/customView/country_code_picker.dart';
-import 'package:four_pews/utils/auth_helper.dart';
 
 import 'package:four_pews/utils/constant.dart';
 import 'package:four_pews/utils/custom_widget.dart';
@@ -337,26 +336,15 @@ class _SignUpPageState extends State<SignUpPage> {
                       "Sign Up",
                       primaryColor,
                       () async {
-                        await AuthenticationHelper()
-                            .signUp(
-                          email: textEmailController.text,
-                          password: textPasswordController.text,
-                        )
-                            .then(
-                          (result) async {
-                            Navigator.pop(context);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => PhoneVerification(
-                                  isSignUp: true,
-                                  result: result,
-                                  phoneNo:
-                                      '$countyCode${textPhoneController.text}',
-                                ),
-                              ),
-                            );
-                          },
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PhoneVerification(
+                              isSignUp: true,
+                              phoneNo: '$countyCode${textPhoneController.text}',
+                            ),
+                          ),
                         );
                       },
                     ),
